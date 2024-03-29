@@ -39,17 +39,6 @@ android {
 dependencies {
     implementation project(':features')
 
-    // Substituição das dependências pelas variáveis do dependencies.gradle
-    implementation libraries.core_ktx
-    implementation libraries.appcompat
-    implementation libraries.material
-    implementation libraries.constraint_layout
-    implementation libraries.lifecycle_livedata_ktx
-    implementation libraries.lifecycle_viewmodel_ktx
     implementation libraries.navigation_fragment_ktx
     implementation libraries.navigation_ui_ktx
-
-    testImplementation tests.junit
-    androidTestImplementation tests.android_test_junit
-    androidTestImplementation tests.espresso_core
 }
