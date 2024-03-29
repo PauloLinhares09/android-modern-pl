@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.packapps.android_modern_pl'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.packapps.android_modern_pl"
