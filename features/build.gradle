@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.packapps.features'
-    compileSdk 33
+    compileSdk sdkVersions.compileSdkVersion
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk sdkVersions.minSdkVersion
+        targetSdk sdkVersions.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -35,14 +35,6 @@ android {
 
 dependencies {
 
-    implementation libraries.core_ktx
-    implementation libraries.appcompat
-    implementation libraries.material
-    implementation libraries.constraint_layout
-    implementation libraries.lifecycle_livedata_ktx
-    implementation libraries.lifecycle_viewmodel_ktx
+    implementation project(':core')
 
-    testImplementation tests.junit
-    androidTestImplementation tests.android_test_junit
-    androidTestImplementation tests.espresso_core
 }

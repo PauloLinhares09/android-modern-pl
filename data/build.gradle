@@ -8,8 +8,9 @@ android {
     compileSdk 33
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk sdkVersions.minSdkVersion
+
+        targetSdk sdkVersions.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
