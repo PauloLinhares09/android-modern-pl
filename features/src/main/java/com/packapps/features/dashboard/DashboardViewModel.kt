@@ -1,4 +1,4 @@
-package com.packapps.android_modern_pl.ui.dashboard
+package com.packapps.features.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
