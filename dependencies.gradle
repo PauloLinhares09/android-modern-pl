@@ -1,0 +1,45 @@
+ext {
+    sdkVersions = [
+            minSdkVersion: 24,
+            targetSdkVersion: 33,
+            compileSdkVersion: 34,
+
+            versionCode: 1,
+            versionName: "1.0.0"
+    ]
+
+    // Atualização das Versões das Bibliotecas
+    libVersions = [
+            coreKtx: '1.7.0',
+            appcompat: '1.6.1',
+            material: '1.11.0',
+            constraintLayout: '2.1.4',
+            lifecycle: '2.7.0',
+            navigation: '2.7.7',
+            junit: '4.13.2',
+            junitExt: '1.1.5',
+            espressoCore: '3.5.1'
+    ]
+
+    // Atualização das Bibliotecas
+    libraries = [
+            core_ktx: "androidx.core:core-ktx:${libVersions.coreKtx}",
+            appcompat: "androidx.appcompat:appcompat:${libVersions.appcompat}",
+            material: "com.google.android.material:material:${libVersions.material}",
+            constraint_layout: "androidx.constraintlayout:constraintlayout:${libVersions.constraintLayout}",
+            lifecycle_livedata_ktx: "androidx.lifecycle:lifecycle-livedata-ktx:${libVersions.lifecycle}",
+            lifecycle_viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${libVersions.lifecycle}",
+            navigation_fragment_ktx: "androidx.navigation:navigation-fragment-ktx:${libVersions.navigation}",
+            navigation_ui_ktx: "androidx.navigation:navigation-ui-ktx:${libVersions.navigation}",
+
+    ]
+
+    tests = [
+
+            junit: "junit:junit:${libVersions.junit}",
+            android_test_junit: "androidx.test.ext:junit:${libVersions.junitExt}",
+            espresso_core: "androidx.test.espresso:espresso-core:${libVersions.espressoCore}"
+    ]
+
+
+}
