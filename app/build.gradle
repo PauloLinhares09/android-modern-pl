@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply from: '../buildFlavors.gradle'
+
+
 android {
     namespace 'com.packapps.android_modern_pl'
     compileSdk sdkVersions.compileSdkVersion
@@ -22,7 +25,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false // Normalmente, não se minifica em debug para facilitar o diagnóstico de problemas
+            applicationIdSuffix ".debug" // Um sufixo de ID de aplicativo para instalações paralelas de builds de release e debug
+            versionNameSuffix "-debug" // Um sufixo de nome de versão para identificar a build no nível de UI e em logs
+            debuggable true
+        }
+
+
     }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -38,6 +51,8 @@ android {
 
 dependencies {
     implementation project(':features')
+    api libraries.koinCore
+    api libraries.koinAndroid
 
     implementation libraries.navigation_fragment_ktx
     implementation libraries.navigation_ui_ktx

@@ -18,7 +18,11 @@ ext {
             navigation: '2.7.7',
             junit: '4.13.2',
             junitExt: '1.1.5',
-            espressoCore: '3.5.1'
+            espressoCore: '3.5.1',
+            retrofit: '2.10.0',
+            lifecycleVersion: '2.5.1',
+            koinVersion: '3.5.3',
+
     ]
 
     // Atualização das Bibliotecas
@@ -31,6 +35,13 @@ ext {
             lifecycle_viewmodel_ktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${libVersions.lifecycle}",
             navigation_fragment_ktx: "androidx.navigation:navigation-fragment-ktx:${libVersions.navigation}",
             navigation_ui_ktx: "androidx.navigation:navigation-ui-ktx:${libVersions.navigation}",
+            retrofit: "com.squareup.retrofit2:retrofit:${libVersions.retrofit}",
+            lifecycleViewModel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${libVersions.lifecycleVersion}",
+            lifecycleLiveData: "androidx.lifecycle:lifecycle-livedata-ktx:${libVersions.lifecycleVersion}",
+            lifecycleSavedState: "androidx.lifecycle:lifecycle-viewmodel-savedstate:${libVersions.lifecycleVersion}",
+            koinCore: "io.insert-koin:koin-core:${libVersions.koinVersion}",
+            koinAndroid: "io.insert-koin:koin-android:${libVersions.koinVersion}",
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${libVersions.retrofit}"
 
     ]
 

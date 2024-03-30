@@ -1,0 +1,28 @@
+android {
+
+
+    // Configurando product flavors
+    flavorDimensions "appType"
+    productFlavors {
+        coffeeBars {
+            applicationId "com.packapps.coffebars"
+            dimension "appType"
+            applicationIdSuffix ".coffee"
+            versionNameSuffix "-coffee"
+
+            versionCode 1
+            versionName "1.0"
+        }
+
+        cocktailBars {
+            applicationId "com.packapps.cocktailbars"
+            dimension "appType"
+            applicationIdSuffix ".cocktail"
+            versionNameSuffix "-cocktail"
+
+            versionCode 2
+            versionName "2.0"
+        }
+
+    }
+}

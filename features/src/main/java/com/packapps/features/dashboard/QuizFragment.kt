@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.packapps.features.databinding.FragmentDashboardBinding
+import com.packapps.features.databinding.FragmentQuizBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DashboardFragment : Fragment() {
+class QuizFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentQuizBinding? = null
+    private val viewModel by viewModel<QuizViewModel>()
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,16 +24,16 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentQuizBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val textView: TextView = binding.textQuiz
+
+        viewModel.nameLiveData.observe(viewLifecycleOwner) { nameFromApi ->
+            textView.text = "Hello World: $nameFromApi"
         }
+
         return root
     }
 

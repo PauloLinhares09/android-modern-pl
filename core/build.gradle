@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply from: '../buildFlavors.gradle'
+
 android {
     namespace 'com.packapps.core'
     compileSdk sdkVersions.compileSdkVersion
@@ -21,6 +23,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -38,6 +41,14 @@ dependencies {
     api libraries.constraint_layout
     api libraries.lifecycle_livedata_ktx
     api libraries.lifecycle_viewmodel_ktx
+    api libraries.retrofit
+    api libraries.lifecycleViewModel
+    api libraries.lifecycleLiveData
+    api libraries.lifecycleSavedState
+    api libraries.koinCore
+    api libraries.koinAndroid
+    api libraries.retrofitConverterGson
+
 
     testImplementation tests.junit
     androidTestImplementation tests.android_test_junit
