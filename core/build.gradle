@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-apply from: '../buildFlavors.gradle'
+//apply from: '../buildFlavors.gradle'
 
 android {
     namespace 'com.packapps.core'
@@ -21,6 +21,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "appType"
+    productFlavors {
+        coffeeBars {
+            dimension "appType"
+            // Removido applicationIdSuffix
+            versionNameSuffix "-coffee"  // Exemplo de configuração válida para library
+        }
+        cocktailBars {
+            dimension "appType"
+            // Removido applicationIdSuffix
+            versionNameSuffix "-cocktail"  // Exemplo de configuração válida para library
         }
     }
 
