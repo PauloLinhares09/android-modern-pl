@@ -22,6 +22,18 @@ android {
         }
     }
 
+    flavorDimensions "appType"
+    productFlavors {
+        coffeeBars {
+            dimension "appType"
+            versionNameSuffix "-coffee"
+        }
+        cocktailBars {
+            dimension "appType"
+            versionNameSuffix "-cocktail"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

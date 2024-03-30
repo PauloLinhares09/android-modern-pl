@@ -28,13 +28,11 @@ android {
     productFlavors {
         coffeeBars {
             dimension "appType"
-            // Removido applicationIdSuffix
-            versionNameSuffix "-coffee"  // Exemplo de configuração válida para library
+            versionNameSuffix "-coffee"
         }
         cocktailBars {
             dimension "appType"
-            // Removido applicationIdSuffix
-            versionNameSuffix "-cocktail"  // Exemplo de configuração válida para library
+            versionNameSuffix "-cocktail"
         }
     }
 
