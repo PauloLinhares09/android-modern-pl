@@ -3,7 +3,7 @@ package com.packapps.features.dashboard.data
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class QuizRepository(private val apiService: QuizApiService) {
+class QuizRepository(private val apiService: FourSquareApiService) {
     suspend fun getName(): Flow<String> {
         return flow {
             val name = apiService.getNameFromApi().body() ?: ""

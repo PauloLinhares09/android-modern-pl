@@ -1,6 +1,6 @@
 package com.packapps.features.dashboard
 
-import com.packapps.features.dashboard.data.QuizApiService
+import com.packapps.features.dashboard.data.FourSquareApiService
 import com.packapps.features.dashboard.data.QuizRepository
 import com.packapps.features.dashboard.interactor.QuizInteractor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,7 +14,7 @@ val quizModule = module {
             .baseUrl("Your API Base URL")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(QuizApiService::class.java)
+            .create(FourSquareApiService::class.java)
     }
 
     single { QuizRepository(apiService = get()) }
