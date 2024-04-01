@@ -1,4 +1,4 @@
-package com.packapps.features.dashboard.data
+package com.packapps.features.places.data
 
 import com.packapps.network.data.places.PlacesResponse
 import retrofit2.Response

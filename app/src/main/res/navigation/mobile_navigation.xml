@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.packapps.features.dashboard.PlacesFragment"
-        android:label="@string/title_dashboard"
+        android:id="@+id/navigation_places"
+        android:name="com.packapps.features.places.PlacesFragment"
+        android:label="@string/title_places"
         tools:layout="@layout/fragment_places" />
 
     <fragment

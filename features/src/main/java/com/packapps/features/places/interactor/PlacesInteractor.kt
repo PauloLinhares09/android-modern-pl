@@ -1,7 +1,7 @@
-package com.packapps.features.dashboard.interactor
+package com.packapps.features.places.interactor
 
 import com.packapps.network.data.places.PlacesResponse
-import com.packapps.features.dashboard.data.PlacesRepository
+import com.packapps.features.places.data.PlacesRepository
 import kotlinx.coroutines.flow.Flow
 
 class PlacesInteractor(private val placesRepository: PlacesRepository) {

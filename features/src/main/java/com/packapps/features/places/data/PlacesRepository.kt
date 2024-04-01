@@ -1,6 +1,5 @@
-package com.packapps.features.dashboard.data
+package com.packapps.features.places.data
 
-import com.packapps.network.FourSquareApiService
 import com.packapps.network.data.places.PlacesResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

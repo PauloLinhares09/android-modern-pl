@@ -1,4 +1,4 @@
-package com.packapps.features.dashboard
+package com.packapps.features.places
 
 import android.os.Bundle
 import android.view.LayoutInflater
