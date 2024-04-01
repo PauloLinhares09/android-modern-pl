@@ -15,6 +15,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "BASE_URL", "\"https://api.foursquare.com/v3/places/search/\""
+        buildConfigField "String", "API_KEY", "\"fsq3WIJIBm/i+scbEm9jSLSLzAuswzj9SMhEU/9rMs5FxGA=\""
     }
 
     buildTypes {
@@ -53,12 +56,15 @@ dependencies {
     api libraries.constraint_layout
     api libraries.lifecycle_livedata_ktx
     api libraries.lifecycle_viewmodel_ktx
+    api libraries.retrofit
     api libraries.lifecycleViewModel
     api libraries.lifecycleLiveData
     api libraries.lifecycleSavedState
     api libraries.koinCore
     api libraries.koinAndroid
     api libraries.retrofitConverterGson
+    api libraries.okhttp3Okhttp
+    api libraries.okhttp3LoggingInterceptor
 
 
     testImplementation tests.junit
