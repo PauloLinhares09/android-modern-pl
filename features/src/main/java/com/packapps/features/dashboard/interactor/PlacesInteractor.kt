@@ -1,6 +1,6 @@
 package com.packapps.features.dashboard.interactor
 
-import com.packapps.features.dashboard.data.PlacesResponse
+import com.packapps.network.data.places.PlacesResponse
 import com.packapps.features.dashboard.data.PlacesRepository
 import kotlinx.coroutines.flow.Flow
 

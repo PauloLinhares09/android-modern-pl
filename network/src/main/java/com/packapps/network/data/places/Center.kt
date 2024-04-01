@@ -1,4 +1,4 @@
-package com.packapps.features.dashboard.data
+package com.packapps.network.data.places
 
 
 import com.google.gson.annotations.SerializedName

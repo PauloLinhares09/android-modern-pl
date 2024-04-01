@@ -1,10 +1,11 @@
 package com.packapps.features.dashboard.data
 
+import com.packapps.network.data.places.PlacesResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface FourSquareApiService {
+interface PlacesApiService {
 
     @GET("v3/places/search")
     suspend fun getPlaces(
