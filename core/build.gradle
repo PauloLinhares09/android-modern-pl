@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        buildConfigField "String", "BASE_URL", "\"https://api.foursquare.com/v3/places/search/\""
+        buildConfigField "String", "BASE_URL", "\"https://api.foursquare.com/\""
         buildConfigField "String", "API_KEY", "\"fsq3WIJIBm/i+scbEm9jSLSLzAuswzj9SMhEU/9rMs5FxGA=\""
     }
 

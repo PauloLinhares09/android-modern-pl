@@ -4,10 +4,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class QuizRepository(private val apiService: FourSquareApiService) {
-    suspend fun getName(): Flow<String> {
+    suspend fun getPlaces(): Flow<PlacesResponse?> {
         return flow {
-            val name = apiService.getNameFromApi().body() ?: ""
-            emit(name)
+            val places = apiService.getPlaces().body() ?: null
+            emit(places)
         }
     }
 }

@@ -12,15 +12,16 @@ class QuizViewModel(private val quizInteractor: QuizInteractor) : ViewModel() {
     val nameLiveData: LiveData<String> = _nameLiveData
 
     init {
-        fetchName()
+        fetchPlace()
     }
 
-    private fun fetchName() {
+    private fun fetchPlace() {
         viewModelScope.launch {
-            quizInteractor.getNameFromApi().collect { name ->
-                _nameLiveData.postValue(name)
+            quizInteractor.getPlaces().collect { places ->
+                _nameLiveData.postValue(places?.context?.geoBounds?.toString())
             }
         }
     }
 }
+
 
