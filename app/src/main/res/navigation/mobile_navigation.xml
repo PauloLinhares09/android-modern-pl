@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.packapps.features.dashboard.QuizFragment"
+        android:name="com.packapps.features.dashboard.PlacesFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_quiz" />
+        tools:layout="@layout/fragment_places" />
 
     <fragment
         android:id="@+id/navigation_notifications"

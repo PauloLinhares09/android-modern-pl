@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.packapps.features.dashboard.interactor.QuizInteractor
+import com.packapps.features.dashboard.interactor.PlacesInteractor
 import kotlinx.coroutines.launch
 
-class QuizViewModel(private val quizInteractor: QuizInteractor) : ViewModel() {
+class PlacesViewModel(private val placesInteractor: PlacesInteractor) : ViewModel() {
     private val _nameLiveData = MutableLiveData<String>()
     val nameLiveData: LiveData<String> = _nameLiveData
 
@@ -17,7 +17,7 @@ class QuizViewModel(private val quizInteractor: QuizInteractor) : ViewModel() {
 
     private fun fetchPlace() {
         viewModelScope.launch {
-            quizInteractor.getPlaces().collect { places ->
+            placesInteractor.getPlaces().collect { places ->
                 _nameLiveData.postValue(places?.context?.geoBounds?.toString())
             }
         }

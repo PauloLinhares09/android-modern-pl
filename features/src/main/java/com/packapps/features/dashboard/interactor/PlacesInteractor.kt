@@ -1,12 +1,12 @@
 package com.packapps.features.dashboard.interactor
 
 import com.packapps.features.dashboard.data.PlacesResponse
-import com.packapps.features.dashboard.data.QuizRepository
+import com.packapps.features.dashboard.data.PlacesRepository
 import kotlinx.coroutines.flow.Flow
 
-class QuizInteractor(private val quizRepository: QuizRepository) {
+class PlacesInteractor(private val placesRepository: PlacesRepository) {
     suspend fun getPlaces(): Flow<PlacesResponse?> {
         //Mapper here
-        return quizRepository.getPlaces()
+        return placesRepository.getPlaces()
     }
 }

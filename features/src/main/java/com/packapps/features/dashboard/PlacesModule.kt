@@ -3,8 +3,8 @@ package com.packapps.features.dashboard
 import android.util.Log
 import com.packapps.core.BuildConfig
 import com.packapps.features.dashboard.data.FourSquareApiService
-import com.packapps.features.dashboard.data.QuizRepository
-import com.packapps.features.dashboard.interactor.QuizInteractor
+import com.packapps.features.dashboard.data.PlacesRepository
+import com.packapps.features.dashboard.interactor.PlacesInteractor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-val quizModule = module {
+val placesModule = module {
 
     single {
         Retrofit.Builder()
@@ -25,9 +25,9 @@ val quizModule = module {
             .create(FourSquareApiService::class.java)
     }
 
-    single { QuizRepository(apiService = get()) }
-    single { QuizInteractor(quizRepository = get()) }
-    viewModel { QuizViewModel(quizInteractor = get()) }
+    single { PlacesRepository(apiService = get()) }
+    single { PlacesInteractor(placesRepository = get()) }
+    viewModel { PlacesViewModel(placesInteractor = get()) }
 }
 
 
