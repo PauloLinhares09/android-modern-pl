@@ -1,4 +1,4 @@
-package com.packapps.features.places.interactor
+package com.packapps.features.places.data.interactor
 
 import com.packapps.network.data.places.PlacesResponse
 import com.packapps.features.places.data.PlacesRepository

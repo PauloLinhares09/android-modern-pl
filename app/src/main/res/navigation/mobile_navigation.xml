@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_places"
-        android:name="com.packapps.features.places.PlacesFragment"
+        android:name="com.packapps.features.places.view.PlacesFragment"
         android:label="@string/title_places"
         tools:layout="@layout/fragment_places" />
 
