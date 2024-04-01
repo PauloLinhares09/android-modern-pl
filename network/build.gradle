@@ -3,10 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-//apply from: '../buildFlavors.gradle'
-
 android {
-    namespace 'com.packapps.core'
+    namespace 'com.packapps.network'
     compileSdk sdkVersions.compileSdkVersion
 
     defaultConfig {
@@ -15,9 +13,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-
-        buildConfigField "String", "BASE_URL", "\"https://api.foursquare.com/\""
-        buildConfigField "String", "API_KEY", "\"fsq3WIJIBm/i+scbEm9jSLSLzAuswzj9SMhEU/9rMs5FxGA=\""
     }
 
     buildTypes {
@@ -49,20 +44,11 @@ android {
 }
 
 dependencies {
+    implementation project(':core')
 
-    api libraries.core_ktx
-    api libraries.appcompat
-    api libraries.material
-    api libraries.constraint_layout
-    api libraries.lifecycle_livedata_ktx
-    api libraries.lifecycle_viewmodel_ktx
-    api libraries.lifecycleViewModel
-    api libraries.lifecycleLiveData
-    api libraries.lifecycleSavedState
-    api libraries.koinCore
-    api libraries.koinAndroid
+    api libraries.retrofit
+    api libraries.retrofitConverterGson
+    api libraries.okhttp3Okhttp
+    api libraries.okhttp3LoggingInterceptor
 
-    testImplementation tests.junit
-    androidTestImplementation tests.android_test_junit
-    androidTestImplementation tests.espresso_core
 }

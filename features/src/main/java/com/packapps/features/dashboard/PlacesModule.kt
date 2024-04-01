@@ -5,6 +5,9 @@ import com.packapps.core.BuildConfig
 import com.packapps.features.dashboard.data.FourSquareApiService
 import com.packapps.features.dashboard.data.PlacesRepository
 import com.packapps.features.dashboard.interactor.PlacesInteractor
+import com.packapps.network.provideHeaderInterceptor
+import com.packapps.network.provideHubOkHttpClient
+import com.packapps.network.provideLoggingInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,41 +34,4 @@ val placesModule = module {
 }
 
 
-fun provideHubOkHttpClient(
-    interceptor: Interceptor,
-    loggingInterceptor: HttpLoggingInterceptor
-): OkHttpClient? {
-    val httpClient = OkHttpClient.Builder()
-    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-    httpClient.addInterceptor(interceptor)
-    httpClient.addInterceptor(loggingInterceptor)
-    httpClient
-        .connectTimeout(45, TimeUnit.SECONDS)
-        .readTimeout(45, TimeUnit.SECONDS)
-        .writeTimeout(45, TimeUnit.SECONDS)
-    return httpClient.build()
-}
-
-fun provideHeaderInterceptor(): Interceptor {
-    return Interceptor { chain: Interceptor.Chain ->
-        var request = chain.request()
-
-        val requestBuilder = request.newBuilder()
-            .header("Authorization", BuildConfig.API_KEY)
-            .header("x-consumer-system", "Mobile")
-
-        request = requestBuilder.build()
-        chain.proceed(request)
-    }
-}
-
-fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-    val logging = HttpLoggingInterceptor { message: String ->
-        Log.d("HTTP INTERCEPTOR",
-            message
-        )
-    }
-    logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-    return logging
-}
 
