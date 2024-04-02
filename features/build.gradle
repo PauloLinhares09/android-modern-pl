@@ -49,6 +49,9 @@ android {
 dependencies {
 
     implementation project(':core')
+    implementation project(':design')
     implementation project(':network')
+    implementation libraries.cardview
+    implementation libraries.recyclerview
 
 }

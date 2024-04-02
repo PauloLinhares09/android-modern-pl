@@ -10,6 +10,8 @@ ext {
 
     // Atualização das Versões das Bibliotecas
     libVersions = [
+            cardview: '1.0.0',
+            recyclerview: '1.2.1',
             coreKtx: '1.7.0',
             appcompat: '1.6.1',
             material: '1.11.0',
@@ -28,6 +30,8 @@ ext {
 
     // Atualização das Bibliotecas
     libraries = [
+            cardview: "androidx.cardview:cardview:${libVersions.cardview}",
+            recyclerview: "androidx.recyclerview:recyclerview:${libVersions.recyclerview}",
             core_ktx: "androidx.core:core-ktx:${libVersions.coreKtx}",
             appcompat: "androidx.appcompat:appcompat:${libVersions.appcompat}",
             material: "com.google.android.material:material:${libVersions.material}",

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/venueImageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /> <!-- Substitua @drawable/ic_placeholder pela sua imagem padrão -->
+
+    <TextView
+        android:id="@+id/venueNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/H1"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        tools:text="Venue Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/venueImageView"
+        app:layout_constraintTop_toBottomOf="@+id/venueImageView" />
+
+    <TextView
+        android:id="@+id/priceRangeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Description"
+        android:layout_marginTop="8dp"
+        tools:text="Price Range"
+        app:layout_constraintEnd_toEndOf="@+id/venueNameTextView"
+        app:layout_constraintStart_toStartOf="@id/venueNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/venueNameTextView" />
+
+    <TextView
+        android:id="@+id/userRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/SubDescription"
+        android:layout_marginTop="8dp"
+        tools:text="User Rating"
+        app:layout_constraintEnd_toEndOf="@+id/priceRangeTextView"
+        app:layout_constraintStart_toStartOf="@id/priceRangeTextView"
+        app:layout_constraintTop_toBottomOf="@id/priceRangeTextView" />
+
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/SmallInfo"
+        android:layout_marginTop="8dp"
+        tools:text="Distance"
+        app:layout_constraintEnd_toEndOf="@+id/userRatingTextView"
+        app:layout_constraintStart_toStartOf="@id/userRatingTextView"
+        app:layout_constraintTop_toBottomOf="@id/userRatingTextView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
