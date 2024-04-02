@@ -50,10 +50,7 @@ android {
 
 dependencies {
 
-    api libraries.core_ktx
-    api libraries.appcompat
-    api libraries.material
-    api libraries.constraint_layout
+
     api libraries.lifecycle_livedata_ktx
     api libraries.lifecycle_viewmodel_ktx
     api libraries.lifecycleViewModel
