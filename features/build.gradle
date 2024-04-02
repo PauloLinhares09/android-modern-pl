@@ -53,5 +53,6 @@ dependencies {
     implementation project(':network')
     implementation libraries.cardview
     implementation libraries.recyclerview
+    implementation libraries.glide
 
 }

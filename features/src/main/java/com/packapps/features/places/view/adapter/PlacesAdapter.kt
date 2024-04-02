@@ -3,8 +3,10 @@ package com.packapps.features.places.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.packapps.features.R
 import com.packapps.features.places.model.data.PlaceViewData
 
@@ -17,16 +19,21 @@ class PlacesAdapter(private val placesList: List<PlaceViewData>) : RecyclerView.
 
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
         val place = placesList[position]
-        // Configure o holder com os dados do lugar
+
+        Glide.with(holder.itemView.context)
+            .load(place.venueProfileImage)
+            .into(holder.ivPlaceBanner)
+
         holder.tvPlaceName.text = place.venueName
         holder.tvPriceRange.text = place.priceRange
         holder.tvRating.text = place.userRating.toString()
-        holder.tvDistance.text = place.distance.toString()
+        holder.tvDistance.text = place.distance.toString() + "m from you"
     }
 
     override fun getItemCount() = placesList.size
 
     class PlaceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val ivPlaceBanner: ImageView = itemView.findViewById(R.id.venueImageView)
         val tvPlaceName: TextView = itemView.findViewById(R.id.venueNameTextView)
         val tvPriceRange: TextView = itemView.findViewById(R.id.priceRangeTextView)
         val tvRating: TextView = itemView.findViewById(R.id.userRatingTextView)

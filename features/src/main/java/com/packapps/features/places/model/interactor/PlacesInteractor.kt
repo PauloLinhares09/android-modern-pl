@@ -19,7 +19,9 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
 
     private fun Result?.toPlaceViewData(): PlaceViewData {
         return PlaceViewData(
-            venueProfileImage = null,
+            venueProfileImage = this?.categories?.firstOrNull()?.icon?.let { icon ->
+            "${icon.prefix}bg_64${icon.suffix}"
+        },
             venueName = this?.name,
             priceRange = null,
             userRating = null,
