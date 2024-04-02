@@ -15,13 +15,12 @@
         <ImageView
             android:id="@+id/venueImageView"
             android:layout_width="@dimen/zero_dp"
-            android:layout_height="@dimen/size_200"
+            android:layout_height="@dimen/size_120"
             android:src="@drawable/ic_launcher_background"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" /> <!-- Substitua @drawable/ic_placeholder pela sua imagem padrão -->
-
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/venueNameTextView"
             android:layout_width="@dimen/zero_dp"

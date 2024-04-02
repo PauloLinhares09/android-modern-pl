@@ -9,8 +9,8 @@ import com.packapps.features.places.model.interactor.PlacesInteractor
 import kotlinx.coroutines.launch
 
 class PlacesViewModel(private val placesInteractor: PlacesInteractor) : ViewModel() {
-    private val _nameLiveData = MutableLiveData<List<PlaceViewData>>()
-    val nameLiveData: LiveData<List<PlaceViewData>> = _nameLiveData
+    private val _placeListLiveData = MutableLiveData<List<PlaceViewData>>()
+    val placesListLiveData: LiveData<List<PlaceViewData>> = _placeListLiveData
 
     init {
         fetchPlace()
@@ -19,7 +19,7 @@ class PlacesViewModel(private val placesInteractor: PlacesInteractor) : ViewMode
     private fun fetchPlace() {
         viewModelScope.launch {
             placesInteractor.getPlaces().collect { places ->
-                _nameLiveData.postValue(places)
+                _placeListLiveData.postValue(places)
             }
         }
     }

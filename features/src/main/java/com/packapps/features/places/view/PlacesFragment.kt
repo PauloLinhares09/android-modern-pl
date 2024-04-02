@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.packapps.features.databinding.FragmentPlacesBinding
 import com.packapps.features.places.PlacesViewModel
+import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlacesFragment : Fragment() {
@@ -29,11 +32,16 @@ class PlacesFragment : Fragment() {
         _binding = FragmentPlacesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textPlaces
+        val rvPlaces: RecyclerView = binding.rvPlaces
 
-        viewModel.nameLiveData.observe(viewLifecycleOwner) { places ->
-            textView.text = "Hello World: ${places.toString()}"
+        // Configurar o LayoutManager
+        rvPlaces.layoutManager = GridLayoutManager(context, 2) // 2 colunas
+
+        // Observar os dados e configurar o adapter
+        viewModel.placesListLiveData.observe(viewLifecycleOwner) { places ->
+            rvPlaces.adapter = PlacesAdapter(places)
         }
+
 
         return root
     }
