@@ -45,6 +45,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
 
     override fun onStop() {
         super.onStop()
+        locationReceived = false
         activity?.unregisterReceiver(locationPermissionResponseReceiver)
     }
 
