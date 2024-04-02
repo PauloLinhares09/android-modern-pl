@@ -1,6 +1,9 @@
 package com.packapps.features.places.view
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -12,6 +15,7 @@ import com.packapps.core.utils.Constants
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
 import com.packapps.features.places.PlacesViewModel
+import com.packapps.features.places.model.data.FilterData
 import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,6 +24,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
     private var _binding: FragmentPlacesBinding? = null
     private val viewModel by viewModel<PlacesViewModel>()
     private var filterDialog: FilterDialogFragment? = null
+    private val filterData by lazy { FilterData(4, false, "", 100000) }
 
 
     // This property is only valid between onCreateView and
@@ -34,6 +39,12 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
     override fun onStart() {
         super.onStart()
         requestLocationPermissionViaBroadcast()
+        activity?.registerReceiver(locationPermissionResponseReceiver, IntentFilter(Constants.ACTION_RESPONSE_LOCATION_PERMISSION))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activity?.unregisterReceiver(locationPermissionResponseReceiver)
     }
 
     override fun onCreateView(
@@ -87,13 +98,30 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
         context?.sendBroadcast(intent)
     }
 
+    private val locationPermissionResponseReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == Constants.ACTION_RESPONSE_LOCATION_PERMISSION) {
+                filterData.ll = intent.extras?.getString(Constants.LL, "").orEmpty()
+                viewModel.fetchPlace(filterData)
+                Toast.makeText(context, filterData.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     override fun onFilterApply(priceRange: Int, openedNow: Boolean, radius: Int) {
-        var ll = "37.7749,-122.4194" // San Francisco TODO get from GPS
-        viewModel.fetchPlace(priceRange, openedNow, ll, radius)
+        filterData.priceRange = priceRange
+        filterData.openedNow = openedNow
+        filterData.radius = radius
+
+        viewModel.fetchPlace(filterData)
     }
 
     override fun onFilterCancel() {
-        Toast.makeText(context, "Filtro cancelado", Toast.LENGTH_SHORT).show()
+        filterData.priceRange = 0
+        filterData.openedNow = false
+        filterData.radius = 100000
+
+        viewModel.fetchPlace(filterData)
     }
 }

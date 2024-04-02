@@ -52,8 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val filter = IntentFilter(Constants.ACTION_REQUEST_LOCATION_PERMISSION)
-        registerReceiver(locationPermissionRequestReceiver, filter)
+        registerReceiver(locationPermissionRequestReceiver, IntentFilter(Constants.ACTION_REQUEST_LOCATION_PERMISSION))
     }
 
     override fun onStop() {
@@ -93,12 +92,9 @@ class MainActivity : AppCompatActivity() {
 
                 // Use a latitude e longitude como necessário
                 Log.d("Location", "Latitude: $latitude, Longitude: $longitude")
-            } else {
-                // Trate o caso em que a localização é nula
-                Log.d("Location", "Location is null")
+                responseLocationViaBroadcast(longitude, latitude)
             }
         }.addOnFailureListener {
-            // Trate qualquer erro ou exceção
             Log.e("Location", "Error getting location")
         }
     }
@@ -111,6 +107,12 @@ class MainActivity : AppCompatActivity() {
                 checkLocationPermission()
             }
         }
+    }
+
+    private fun responseLocationViaBroadcast(longitude: Double, latitude: Double) {
+        val intent = Intent(Constants.ACTION_RESPONSE_LOCATION_PERMISSION)
+        intent.putExtra(Constants.LL, "$latitude,$longitude")
+        sendBroadcast(intent)
     }
 
 

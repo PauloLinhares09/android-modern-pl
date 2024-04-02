@@ -42,7 +42,7 @@ class FilterDialogFragment : DialogFragment() {
             val priceRangeChecked = binding.spPriceRange.selectedItemPosition
             val openedNowChecked = binding.switchOpenNow.isChecked
             val radius = binding.sliderRadius.value.toInt()
-            listener?.onFilterApply(priceRangeChecked, openedNowChecked, radius)
+            listener?.onFilterApply(priceRangeChecked+1, openedNowChecked, radius)
             dismiss()
         }
 
