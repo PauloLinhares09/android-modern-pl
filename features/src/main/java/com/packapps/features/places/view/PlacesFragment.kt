@@ -1,5 +1,6 @@
 package com.packapps.features.places.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.packapps.core.utils.Constants
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
 import com.packapps.features.places.PlacesViewModel
@@ -27,6 +29,11 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        requestLocationPermissionViaBroadcast()
     }
 
     override fun onCreateView(
@@ -74,6 +81,12 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
             }
         }
     }
+
+    private fun requestLocationPermissionViaBroadcast() {
+        val intent = Intent(Constants.ACTION_REQUEST_LOCATION_PERMISSION)
+        context?.sendBroadcast(intent)
+    }
+
 
     override fun onFilterApply(priceRange: Int, openedNow: Boolean, radius: Int) {
         var ll = "37.7749,-122.4194" // San Francisco TODO get from GPS

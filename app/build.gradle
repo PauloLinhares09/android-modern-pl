@@ -52,6 +52,7 @@ android {
 dependencies {
     implementation project(':features')
     implementation project(':design')
+    implementation project(':core')
     api libraries.koinCore
     api libraries.koinAndroid
 
