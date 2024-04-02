@@ -13,10 +13,11 @@ import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PlacesFragment : Fragment() {
+class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
 
     private var _binding: FragmentPlacesBinding? = null
     private val viewModel by viewModel<PlacesViewModel>()
+    private var filterDialog: FilterDialogFragment? = null
 
 
     // This property is only valid between onCreateView and
@@ -53,7 +54,7 @@ class PlacesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_filter -> {
-                Toast.makeText(context, "Filter", Toast.LENGTH_SHORT).show()
+                showFilterDialog()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -63,5 +64,22 @@ class PlacesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showFilterDialog() {
+        if (filterDialog?.dialog?.isShowing != true) {
+            filterDialog = FilterDialogFragment().also {
+                it.listener = this
+                it.show(childFragmentManager, "FilterDialogFragment")
+            }
+        }
+    }
+
+    override fun onFilterApply(priceRange: Boolean, openedNow: Boolean) {
+        Toast.makeText(context, "Filtro aplicado: priceRange: ${priceRange} e openedNow: ${openedNow}", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onFilterCancel() {
+        Toast.makeText(context, "Filtro cancelado", Toast.LENGTH_SHORT).show()
     }
 }

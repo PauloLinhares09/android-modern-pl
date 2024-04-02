@@ -1,10 +1,14 @@
-<!-- res/layout/dialog_filter.xml -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".places.view.FilterDialogFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -82,24 +86,48 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
+                    android:padding="@dimen/margin_16"
                     android:text="@string/cancelar"
-                    android:backgroundTint="@color/secondaryTextColor"
-                    android:textColor="@color/primaryColorLight"
+                    android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/openedNowCheckbox"
                     app:layout_constraintStart_toStartOf="@+id/openedNowCheckbox"
                     app:layout_constraintTop_toBottomOf="@id/openedNowCheckbox" />
 
-                <Button
-                    android:id="@+id/btnFilter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/filtrar"
-                    android:textColor="@color/primaryColorLight"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
-                    app:layout_constraintEnd_toEndOf="@+id/openedNowCheckbox"
-                    app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+<!--                <Button-->
+<!--                    android:id="@+id/btnCancel"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    android:padding="@dimen/margin_16"-->
+<!--                    android:text="@string/cancelar"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/btnFilter"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/openedNowCheckbox" />-->
 
+<!--&lt;!&ndash;                <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/btnCancel"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:text="Test"/>&ndash;&gt;-->
 
+<!--                <Button-->
+<!--                    android:id="@+id/btnFilter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="@dimen/margin_16"-->
+<!--                    android:text="@string/filtrar"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/btnCancel"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@id/btnCancel"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/btnCancel" />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>
