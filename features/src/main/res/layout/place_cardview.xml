@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="@dimen/zero_dp"
+    app:cardCornerRadius="@dimen/margin_16"
     app:cardElevation="4dp"
     android:layout_margin="@dimen/margin_8">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_fuchsia">
 
 
         <ImageView
@@ -36,32 +37,29 @@
 
         <TextView
             android:id="@+id/priceRangeTextView"
+            style="@style/Description"
             android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
-            style="@style/Description"
-            android:layout_marginTop="@dimen/margin_8"
-            tools:text="Price Range"
             app:layout_constraintEnd_toEndOf="@+id/venueNameTextView"
             app:layout_constraintStart_toStartOf="@id/venueNameTextView"
-            app:layout_constraintTop_toBottomOf="@id/venueNameTextView" />
+            app:layout_constraintTop_toBottomOf="@id/venueNameTextView"
+            tools:text="Price Range" />
 
         <TextView
             android:id="@+id/userRatingTextView"
+            style="@style/SubDescription"
             android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
-            style="@style/SubDescription"
-            android:layout_marginTop="@dimen/margin_8"
-            tools:text="User Rating"
             app:layout_constraintEnd_toEndOf="@+id/priceRangeTextView"
             app:layout_constraintStart_toStartOf="@id/priceRangeTextView"
-            app:layout_constraintTop_toBottomOf="@id/priceRangeTextView" />
+            app:layout_constraintTop_toBottomOf="@id/priceRangeTextView"
+            tools:text="User Rating" />
 
         <TextView
             android:id="@+id/distanceTextView"
             style="@style/SmallInfo"
             android:layout_width="@dimen/zero_dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/userRatingTextView"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_card_gradient_fuchsia"
     tools:context="com.packapps.features.places.view.PlacesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
