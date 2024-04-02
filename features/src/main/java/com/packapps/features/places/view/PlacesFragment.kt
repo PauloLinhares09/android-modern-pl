@@ -75,8 +75,9 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
         }
     }
 
-    override fun onFilterApply(priceRange: Boolean, openedNow: Boolean) {
-        Toast.makeText(context, "Filtro aplicado: priceRange: ${priceRange} e openedNow: ${openedNow}", Toast.LENGTH_SHORT).show()
+    override fun onFilterApply(priceRange: Int, openedNow: Boolean, radius: Int) {
+        var ll = "37.7749,-122.4194" // San Francisco TODO get from GPS
+        viewModel.fetchPlace(priceRange, openedNow, ll, radius)
     }
 
     override fun onFilterCancel() {

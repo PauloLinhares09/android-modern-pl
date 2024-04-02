@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class PlacesInteractor(private val placesRepository: PlacesRepository) {
-    suspend fun getPlaces(): Flow<List<PlaceViewData>> {
-        return placesRepository.getPlaces().map { placesResponse ->
+    suspend fun getPlaces(priceRange: Int?, openedNow: Boolean, ll: String, radius: Int): Flow<List<PlaceViewData>> {
+        return placesRepository.getPlaces(priceRange, openedNow, ll, radius).map { placesResponse ->
             placesResponse?.results?.mapNotNull { result ->
                 result?.toPlaceViewData()
             } ?: emptyList()

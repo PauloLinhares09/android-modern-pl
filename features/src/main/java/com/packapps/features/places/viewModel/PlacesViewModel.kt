@@ -16,9 +16,9 @@ class PlacesViewModel(private val placesInteractor: PlacesInteractor) : ViewMode
         fetchPlace()
     }
 
-    private fun fetchPlace() {
+    fun fetchPlace(priceRange: Int? = null, openedNow: Boolean = false, ll: String = "", radius: Int = 100000) {
         viewModelScope.launch {
-            placesInteractor.getPlaces().collect { places ->
+            placesInteractor.getPlaces(priceRange, openedNow, ll, radius).collect { places ->
                 _placeListLiveData.postValue(places)
             }
         }

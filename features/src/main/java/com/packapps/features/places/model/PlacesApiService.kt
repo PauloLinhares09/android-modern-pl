@@ -9,7 +9,10 @@ interface PlacesApiService {
 
     @GET("v3/places/search")
     suspend fun getPlaces(
-        @Query("ll") ll: String = "40.748817,-73.985428",
+        @Query("min_price") priceRange: Int?, //1 to 4
+        @Query("open_now") openedNow: Boolean,
+        @Query("ll") ll: String,
+        @Query("radius") radius: Int = 100000,
     ): Response<PlacesResponse>
 
 }

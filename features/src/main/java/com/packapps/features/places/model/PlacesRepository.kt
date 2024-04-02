@@ -5,9 +5,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class PlacesRepository(private val apiService: PlacesApiService) {
-    suspend fun getPlaces(): Flow<PlacesResponse?> {
+    suspend fun getPlaces(priceRange: Int?, openedNow: Boolean, ll: String, radius: Int): Flow<PlacesResponse?> {
         return flow {
-            val places = apiService.getPlaces().body() ?: null
+            val places = apiService.getPlaces(priceRange, openedNow, ll, radius).body() ?: null
             emit(places)
         }
     }

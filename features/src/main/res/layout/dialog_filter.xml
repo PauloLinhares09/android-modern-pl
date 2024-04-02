@@ -53,52 +53,88 @@
                     app:layout_constraintStart_toStartOf="@+id/dialogTitle"
                     app:layout_constraintTop_toBottomOf="@id/dialogTitle" />
 
-                <CheckBox
-                    android:id="@+id/priceRangeCheckbox"
-                    style="@style/H4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/price_range"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dialogSubtitle" />
 
-                <CheckBox
-                    android:id="@+id/openedNowCheckbox"
-                    style="@style/H4"
+                <Spinner
+                    android:id="@+id/spPriceRange"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/opened_now"
-                    app:layout_constraintEnd_toEndOf="@+id/priceRangeCheckbox"
-                    app:layout_constraintStart_toStartOf="@+id/priceRangeCheckbox"
-                    app:layout_constraintTop_toBottomOf="@id/priceRangeCheckbox" />
-
-                <Button
-                    android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/cancelar"
-                    android:backgroundTint="@color/secondaryTextColor"
-                    android:textColor="@color/primaryColorLight"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/openedNowCheckbox"
-                    app:layout_constraintTop_toBottomOf="@id/openedNowCheckbox" />
+                    android:entries="@array/price_options"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dialogSubtitle" />
 
-                <Button
-                    android:id="@+id/btnFilter"
-                    android:layout_width="wrap_content"
+                <Switch
+                    android:id="@+id/switchOpenNow"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/filtrar"
-                    android:textColor="@color/primaryColorLight"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
-                    app:layout_constraintEnd_toEndOf="@+id/openedNowCheckbox"
-                    app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+                    android:layout_marginTop="16dp"
+                    android:text="Aberto Agora"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spPriceRange" />
 
+                <LinearLayout
+                    android:id="@+id/llButtons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llRadius">
+
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancelar" />
+
+                    <Button
+                        android:id="@+id/btnApply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Aplicar" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llRadius"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/llButtons"
+                    app:layout_constraintStart_toStartOf="@+id/llButtons"
+                    app:layout_constraintTop_toBottomOf="@+id/switchOpenNow">
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/sliderRadius"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:valueFrom="0"
+                        android:valueTo="1000000"
+                        android:stepSize="1000"
+                        app:layout_constraintTop_toBottomOf="@id/switchOpenNow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvRadiusValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Raio: 0m"
+                        style="@style/Description"
+                        app:layout_constraintTop_toBottomOf="@id/sliderRadius"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

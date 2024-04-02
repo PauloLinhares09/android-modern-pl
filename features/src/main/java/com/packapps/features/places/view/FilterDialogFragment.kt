@@ -17,7 +17,7 @@ class FilterDialogFragment : DialogFragment() {
     private val binding get() = _binding!!
 
     interface FilterDialogListener {
-        fun onFilterApply(priceRange: Boolean, openedNow: Boolean)
+        fun onFilterApply(priceRange: Int, openedNow: Boolean, radius: Int)
         fun onFilterCancel()
     }
 
@@ -34,10 +34,15 @@ class FilterDialogFragment : DialogFragment() {
             dismiss()
         }
 
-        binding.btnFilter.setOnClickListener {
-            val priceRangeChecked = binding.priceRangeCheckbox.isChecked
-            val openedNowChecked = binding.openedNowCheckbox.isChecked
-            listener?.onFilterApply(priceRangeChecked, openedNowChecked)
+        binding.sliderRadius.addOnChangeListener { slider, value, fromUser ->
+            binding.tvRadiusValue.text = getString(R.string.radius_value, value.toInt())
+        }
+
+        binding.btnApply.setOnClickListener {
+            val priceRangeChecked = binding.spPriceRange.selectedItemPosition
+            val openedNowChecked = binding.switchOpenNow.isChecked
+            val radius = binding.sliderRadius.value.toInt()
+            listener?.onFilterApply(priceRangeChecked, openedNowChecked, radius)
             dismiss()
         }
 
