@@ -31,8 +31,8 @@ class PlacesFragment : Fragment() {
 
         val textView: TextView = binding.textPlaces
 
-        viewModel.nameLiveData.observe(viewLifecycleOwner) { nameFromApi ->
-            textView.text = "Hello World: $nameFromApi"
+        viewModel.nameLiveData.observe(viewLifecycleOwner) { places ->
+            textView.text = "Hello World: ${places.toString()}"
         }
 
         return root

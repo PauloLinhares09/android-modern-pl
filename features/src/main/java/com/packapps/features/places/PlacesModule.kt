@@ -1,8 +1,8 @@
 package com.packapps.features.places
 
-import com.packapps.features.places.data.PlacesApiService
-import com.packapps.features.places.data.PlacesRepository
-import com.packapps.features.places.data.interactor.PlacesInteractor
+import com.packapps.features.places.model.PlacesApiService
+import com.packapps.features.places.model.PlacesRepository
+import com.packapps.features.places.model.interactor.PlacesInteractor
 import com.packapps.network.createApiService
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

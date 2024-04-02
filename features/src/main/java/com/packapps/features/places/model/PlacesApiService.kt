@@ -1,4 +1,4 @@
-package com.packapps.features.places.data
+package com.packapps.features.places.model
 
 import com.packapps.network.data.places.PlacesResponse
 import retrofit2.Response

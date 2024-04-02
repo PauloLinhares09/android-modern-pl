@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.packapps.features.places.data.interactor.PlacesInteractor
+import com.packapps.features.places.model.data.PlaceViewData
+import com.packapps.features.places.model.interactor.PlacesInteractor
 import kotlinx.coroutines.launch
 
 class PlacesViewModel(private val placesInteractor: PlacesInteractor) : ViewModel() {
-    private val _nameLiveData = MutableLiveData<String>()
-    val nameLiveData: LiveData<String> = _nameLiveData
+    private val _nameLiveData = MutableLiveData<List<PlaceViewData>>()
+    val nameLiveData: LiveData<List<PlaceViewData>> = _nameLiveData
 
     init {
         fetchPlace()
@@ -18,7 +19,7 @@ class PlacesViewModel(private val placesInteractor: PlacesInteractor) : ViewMode
     private fun fetchPlace() {
         viewModelScope.launch {
             placesInteractor.getPlaces().collect { places ->
-                _nameLiveData.postValue(places?.context?.geoBounds?.toString())
+                _nameLiveData.postValue(places)
             }
         }
     }
