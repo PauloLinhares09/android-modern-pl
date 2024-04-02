@@ -16,6 +16,7 @@ import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
 import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.FilterData
+import com.packapps.features.places.model.data.PlacesState
 import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -60,9 +61,22 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
 
         val rvPlaces: RecyclerView = binding.rvPlaces
         rvPlaces.layoutManager = GridLayoutManager(context, 2) // 2 colunas
-        viewModel.placesListLiveData.observe(viewLifecycleOwner) { places ->
-            rvPlaces.adapter = PlacesAdapter(places)
+        viewModel.placesStateLiveData.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is PlacesState.Loading -> {
+                    // Exibir indicador de carregamento
+                }
+                is PlacesState.Success -> {
+                    // Exibir a lista de locais
+                    rvPlaces.adapter = PlacesAdapter(state.places)
+                }
+                is PlacesState.Failure -> {
+                    // Exibir mensagem de erro
+//                    showError(state.error.message)
+                }
+            }
         }
+
         return root
     }
 
