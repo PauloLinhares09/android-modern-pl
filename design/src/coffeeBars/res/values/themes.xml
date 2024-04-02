@@ -17,6 +17,7 @@
 
     <!-- Tema para a Splash Screen -->
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
 
     </style>
 
