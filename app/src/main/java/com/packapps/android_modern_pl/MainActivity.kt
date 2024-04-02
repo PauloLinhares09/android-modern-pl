@@ -1,11 +1,13 @@
 package com.packapps.android_modern_pl
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -16,16 +18,23 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.packapps.android_modern_pl.databinding.ActivityMainBinding
 import com.packapps.core.utils.Constants
+import android.location.Location
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.Task
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         val navView: BottomNavigationView = binding.navView
 
@@ -69,12 +78,29 @@ class MainActivity : AppCompatActivity() {
                 getLocation()
             } else {
                 // A permissão foi negada. Você pode tratar isso conforme necessário.
+                Log.d("Location", "Permission denied")
             }
         }
     }
 
+    @SuppressLint("MissingPermission") // Assegure que a permissão foi checada antes de chamar esse método
     private fun getLocation() {
-        // Implemente a lógica para obter a localização aqui
+        val task: Task<Location> = fusedLocationClient.lastLocation
+        task.addOnSuccessListener { location: Location? ->
+            if (location != null) {
+                val latitude = location.latitude
+                val longitude = location.longitude
+
+                // Use a latitude e longitude como necessário
+                Log.d("Location", "Latitude: $latitude, Longitude: $longitude")
+            } else {
+                // Trate o caso em que a localização é nula
+                Log.d("Location", "Location is null")
+            }
+        }.addOnFailureListener {
+            // Trate qualquer erro ou exceção
+            Log.e("Location", "Error getting location")
+        }
     }
 
     //#### Broadcast location

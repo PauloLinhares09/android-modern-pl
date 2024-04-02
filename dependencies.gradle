@@ -25,7 +25,9 @@ ext {
             lifecycleVersion: '2.5.1',
             koinVersion: '3.5.3',
             okhttp3: '4.12.0',
-            glide: '4.12.0'
+            glide: '4.12.0',
+            playServicesLocation: '18.0.0',
+            playServicesGcm: '17.0.0'
 
     ]
 
@@ -51,7 +53,8 @@ ext {
             okhttp3Okhttp: "com.squareup.okhttp3:okhttp:${libVersions.okhttp3}",
             okhttp3LoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${libVersions.okhttp3}",
             glide: "com.github.bumptech.glide:glide:${libVersions.glide}",
-
+            playServicesLocation: "com.google.android.gms:play-services-location:${libVersions.playServicesLocation}",
+            playServicesGcm: "com.google.android.gms:play-services-gcm:${libVersions.playServicesGcm}"
 
     ]
 
