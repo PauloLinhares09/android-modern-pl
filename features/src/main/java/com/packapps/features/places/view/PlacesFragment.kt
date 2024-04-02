@@ -25,6 +25,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
     private val viewModel by viewModel<PlacesViewModel>()
     private var filterDialog: FilterDialogFragment? = null
     private val filterData by lazy { FilterData(4, false, "", 100000) }
+    private var locationReceived = false
 
 
     // This property is only valid between onCreateView and
@@ -102,8 +103,11 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action == Constants.ACTION_RESPONSE_LOCATION_PERMISSION) {
                 filterData.ll = intent.extras?.getString(Constants.LL, "").orEmpty()
-                viewModel.fetchPlace(filterData)
-                Toast.makeText(context, filterData.toString(), Toast.LENGTH_SHORT).show()
+                if (!locationReceived) {
+                    locationReceived = true
+                    viewModel.fetchPlace(filterData)
+                    Toast.makeText(context, filterData.toString(), Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

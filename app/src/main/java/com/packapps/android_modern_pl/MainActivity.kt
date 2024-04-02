@@ -90,8 +90,6 @@ class MainActivity : AppCompatActivity() {
                 val latitude = location.latitude
                 val longitude = location.longitude
 
-                // Use a latitude e longitude como necessário
-                Log.d("Location", "Latitude: $latitude, Longitude: $longitude")
                 responseLocationViaBroadcast(longitude, latitude)
             }
         }.addOnFailureListener {
