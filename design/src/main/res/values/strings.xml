@@ -9,5 +9,6 @@
     <string name="list_empty_message">Não foram encontrados itens para mostrar.</string>
     <string name="unknown_error_title">Erro Desconhecido</string>
     <string name="unknown_error_message">Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.</string>
+    <string name="try_again">Try Again</string>
 
 </resources>
