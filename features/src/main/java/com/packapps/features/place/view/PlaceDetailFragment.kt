@@ -1,5 +1,6 @@
 package com.packapps.features.place.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -58,10 +59,9 @@ class PlaceDetailFragment : Fragment() {
                         binding.tvCategoryPriceRating.text = it.priceRange ?: ""
                         binding.tvPhoneNumber.text = it.phoneNumber ?: "(***) ***-****"
                         binding.tvAddress.text = it.address
-                        binding.tvAvailability.text = it.isOpenNow.toString()
+                        binding.tvAvailability.text = it.isOpenNow.toOpenNowString(context)
 
-                        // Configurar o ícone de favorito baseado em isFavorite
-                        binding.ivFavorite.setImageResource(if (it.isFavorite) android.R.drawable.ic_lock_idle_alarm else android.R.drawable.ic_lock_idle_alarm)
+                        binding.ivFavorite.setImageResource(if (it.isFavorite) com.packapps.design.R.drawable.favorite_yes else com.packapps.design.R.drawable.favorite_not)
 
                         // Supondo que você tenha um adapter para a RecyclerView de fotos
 //                        binding.rvVenuePhotos.adapter = PhotoAdapter(it.photos)
@@ -92,4 +92,8 @@ class PlaceDetailFragment : Fragment() {
         }
     }
 
+}
+
+private fun Boolean.toOpenNowString(context: Context?): CharSequence? {
+    return if (this) context?.getString(R.string.open_now) else context?.getString(R.string.closed)
 }
