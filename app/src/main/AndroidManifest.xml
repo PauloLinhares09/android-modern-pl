@@ -20,6 +20,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AndroidModernpl"
+            android:screenOrientation="portrait"
             android:label="@string/app_name">
 
         </activity>

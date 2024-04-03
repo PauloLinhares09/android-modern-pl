@@ -127,7 +127,6 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
                 if (!locationReceived) {
                     locationReceived = true
                     viewModel.fetchPlace(filterData)
-                    Toast.makeText(context, filterData.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         }

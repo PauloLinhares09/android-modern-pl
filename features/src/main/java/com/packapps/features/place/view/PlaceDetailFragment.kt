@@ -44,9 +44,11 @@ class PlaceDetailFragment : Fragment() {
         setHasOptionsMenu(true)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
         val selectedPlace = arguments?.getParcelable<PlaceViewData>(Constants.PLACE)
         viewModel.fetchPlaceDetail(selectedPlace?.fsqId.orEmpty())
         binding.tvPlaceName.text = selectedPlace?.venueName
+        changeTitleActionBar(selectedPlace)
 
         viewModel.placeDetailStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
@@ -79,6 +81,11 @@ class PlaceDetailFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun changeTitleActionBar(selectedPlace: PlaceViewData?) {
+        (activity as AppCompatActivity).supportActionBar?.title =
+            selectedPlace?.venueName?.split(" ")?.firstOrNull()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
