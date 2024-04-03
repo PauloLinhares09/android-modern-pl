@@ -28,8 +28,7 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
         this?.let {
             PlaceDetailViewData(
                 venueName = it?.name.orEmpty(),
-//                categories = it.categories.map { category -> category.name },
-                categories = mutableListOf(),
+                categories = it.categories!!.map { category -> category?.name.orEmpty() },
                 address = it?.location?.formattedAddress.orEmpty(),
                 isOpenNow = it.closedBucket != "Closed", // Simplificação para determinar disponibilidade
                 photos = listOf(), // Simulação, pois a API de exemplo não inclui fotos
@@ -45,6 +44,7 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
             "${icon.prefix}bg_64${icon.suffix}"
         },
             fsqId = this?.fsqId,
+            id = this?.categories?.firstOrNull()?.id,
             venueName = this?.name,
             priceRange = null,
             userRating = null,

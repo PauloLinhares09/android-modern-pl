@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.packapps.core.navigation.NavigationCommand
 import com.packapps.core.utils.Constants
+import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
 import com.packapps.features.place.model.data.PlaceDetailState
 import com.packapps.features.place.view.adapter.PlaceDetailsAdapter
@@ -51,6 +52,23 @@ class PlaceDetailFragment : Fragment() {
                 }
                 is PlaceDetailState.Success -> {
                     binding.viewFlipper.displayedChild = 1
+
+                    state.place?.let {
+
+                        binding.tvCategoryPriceRating.text = it.priceRange ?: ""
+                        binding.tvPhoneNumber.text = it.phoneNumber ?: "(***) ***-****"
+                        binding.tvAddress.text = it.address
+                        binding.tvAvailability.text = it.isOpenNow.toString()
+
+                        // Configurar o ícone de favorito baseado em isFavorite
+                        binding.ivFavorite.setImageResource(if (it.isFavorite) android.R.drawable.ic_lock_idle_alarm else android.R.drawable.ic_lock_idle_alarm)
+
+                        // Supondo que você tenha um adapter para a RecyclerView de fotos
+//                        binding.rvVenuePhotos.adapter = PhotoAdapter(it.photos)
+//
+//                        // Supondo que você tenha um adapter para a RecyclerView de dicas
+//                        binding.rvCustomerTips.adapter = TipsAdapter(it.tips)
+                    }
                 }
                 is PlaceDetailState.Failure -> {
                     binding.viewFlipper.displayedChild = 2
