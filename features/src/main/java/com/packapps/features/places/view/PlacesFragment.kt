@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.packapps.core.utils.Constants
+import com.packapps.design.components.ErrorComponent
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
 import com.packapps.features.places.PlacesViewModel
@@ -60,22 +61,23 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
 
         val rvPlaces: RecyclerView = binding.rvPlaces
         rvPlaces.layoutManager = GridLayoutManager(context, 2) // 2 colunas
+
+
         viewModel.placesStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is PlacesState.Loading -> {
                     binding.viewFlipper.displayedChild = 0
                 }
                 is PlacesState.Success -> {
-                    // Exibir a lista de locais
                     binding.viewFlipper.displayedChild = 1
                     rvPlaces.adapter = PlacesAdapter(state.places)
-                    Toast.makeText(context, state.places.toString(), Toast.LENGTH_SHORT).show()
-
                 }
                 is PlacesState.Failure -> {
-                    // Exibir mensagem de erro
-//                    showError(state.error.message)
-                    Toast.makeText(context, state.error.message, Toast.LENGTH_SHORT).show()
+                    binding.viewFlipper.displayedChild = 2
+                    binding.errorComponent.setErrorType(ErrorComponent.ErrorType.NETWORK_ERROR)
+                    binding.errorComponent.setOnTryAgainClickListener {
+                        viewModel.fetchPlace(filterData.clear())
+                    }
                 }
             }
         }

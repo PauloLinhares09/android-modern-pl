@@ -1,4 +1,13 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sorry_something_went_wrong">Sorry, something went wrong.</string>
+
+    <string name="network_error_title">Problema de Conexão</string>
+    <string name="network_error_message">Não foi possível conectar à internet. Verifique sua conexão e tente novamente.</string>
+    <string name="list_empty_title">Nenhum Resultado</string>
+    <string name="list_empty_message">Não foram encontrados itens para mostrar.</string>
+    <string name="unknown_error_title">Erro Desconhecido</string>
+    <string name="unknown_error_message">Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.</string>
+
 </resources>
