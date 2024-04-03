@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingEnd="16dp"
+        tools:listitem="@layout/item_place_detail"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

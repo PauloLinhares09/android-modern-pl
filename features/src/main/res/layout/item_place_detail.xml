@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/spacer"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,9 +53,120 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintTop_toBottomOf="@+id/spacer"
         app:layout_constraintWidth_percent="0.9"
         tools:ignore="MissingDefaultResource">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCategoryPriceRating"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvCategoryPriceRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Category • $ • ★ 4.5 (200)"
+                style="@style/H4"
+                app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Phone: (123) 456-7890"
+                style="@style/Description"
+                app:layout_constraintEnd_toEndOf="@+id/tvCategoryPriceRating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCategoryPriceRating" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="123 Main St, City, Country"
+                style="@style/Description"
+                app:layout_constraintEnd_toEndOf="@+id/tvPhoneNumber"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+            <TextView
+                android:id="@+id/tvAvailability"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Open Now"
+                style="@style/SubDescription"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVenuePhotos"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAvailability"
+                tools:listitem="@layout/item_photo" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvVenuePhotos"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/txLabelCustomerTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/look_what_are_talking_about_this_place"
+                style="@style/H4"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCustomerTips"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txLabelCustomerTips"
+                tools:listitem="@layout/item_customer_tip" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
     </androidx.cardview.widget.CardView>
