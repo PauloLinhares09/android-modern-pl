@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.packapps.core.utils.Constants
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
-import com.packapps.features.place.model.PlaceDetailViewData
 import com.packapps.features.place.view.adapter.PlaceDetailsAdapter
 import com.packapps.features.places.model.data.PlaceViewData
 
@@ -31,20 +31,26 @@ class PlaceDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val selectedPlace = arguments?.getParcelable<PlaceViewData>("selected_place")
-        val placesList = arguments?.getParcelableArrayList<PlaceViewData>("places_list")
+        val selectedPlace = arguments?.getParcelable<PlaceViewData>(Constants.PLACE)
+        val placesArray = arguments?.getParcelableArray(Constants.PLACES_LIST)
+
+        val placesList = placesArray?.let { array ->
+            // Converte o array para um ArrayList de PlaceViewData
+            ArrayList(array.map { it as PlaceViewData })
+        }
 
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        adapter = PlaceDetailsAdapter(getPlaceDetails())
-        recyclerView.adapter = adapter
+        val rvPlaces: RecyclerView = binding.recyclerView
+        rvPlaces.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        selectedPlace?.let {
+            placesList?.add(0, it)
+            adapter = PlaceDetailsAdapter(placesList?: mutableListOf(), it)
+            rvPlaces.adapter = adapter
 
-        val snapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerView)
-    }
+            val snapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(rvPlaces)
+        }
 
-    private fun getPlaceDetails(): List<PlaceDetailViewData> {
-        // Implemente a lógica para obter os detalhes do lugar
-        return emptyList()
+
     }
 }

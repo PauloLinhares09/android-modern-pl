@@ -38,11 +38,11 @@
         tools:layout="@layout/fragment_place_detail">
 
         <argument
-            android:name="selected_place"
+            android:name="com.packapps.foursquare.PLACE"
             app:argType="com.packapps.features.places.model.data.PlaceViewData" />
 
         <argument
-            android:name="places_list"
+            android:name="com.packapps.foursquare.PLACES_LIST"
             app:argType="com.packapps.features.places.model.data.PlaceViewData[]" />
     </fragment>
 

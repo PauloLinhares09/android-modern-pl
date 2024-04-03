@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- item_place_detail.xml -->
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:layout_margin="5dp"-->
+<!--    app:cardElevation="4dp"-->
+<!--    app:cardCornerRadius="8dp"-->
+<!--    app:layout_constraintWidth_percent="0.9"-->
+<!--    tools:ignore="MissingDefaultResource">-->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="8dp"
-    app:layout_constraintWidth_percent="0.9"
-    tools:ignore="MissingDefaultResource">
+    android:padding="16dp"
+    android:background="@drawable/bg_gradient_fuchsia"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+    <TextView
+        android:id="@+id/tvPlaceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do local"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Nome do local"/>
-
-        <!-- Adicione aqui TextViews, ImageView, etc. para nome do local, categoria, faixa de preço, etc. -->
+    <!-- Adicione aqui TextViews, ImageView, etc. para nome do local, categoria, faixa de preço, etc. -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+<!--</androidx.cardview.widget.CardView>-->
