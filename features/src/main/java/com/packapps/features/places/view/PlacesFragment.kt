@@ -154,7 +154,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
         //Create the Broadcast Receiver to pass this params to the MainActivity
         val intent = Intent(Constants.ACTION_PLACE_CLICK)
         intent.putExtra(Constants.PLACE, place)
-        intent.putExtra(Constants.PLACES_LIST, placesList.toTypedArray())
+        intent.putParcelableArrayListExtra(Constants.PLACES_LIST, ArrayList(placesList))
         context?.sendBroadcast(intent)
 
     }

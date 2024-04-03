@@ -127,12 +127,12 @@ class MainActivity : AppCompatActivity() {
     private fun openFragmentInNavHostFragment(intent: Intent) {
 
         val place: PlaceViewData? = intent.getParcelableExtra(Constants.PLACE)
-        val placesList: Array<PlaceViewData>? = intent.getParcelableArrayExtra(Constants.PLACES_LIST) as? Array<PlaceViewData>
+        val placesList: ArrayList<PlaceViewData>? = intent.getParcelableArrayListExtra(Constants.PLACES_LIST)
 
         place?.let {
             placesList?.let {
                 val navController = findNavController(R.id.nav_host_fragment_activity_main)
-                val action = MobileNavigationDirections.actionGlobalPlaceDetailFragment(place, placesList)
+                val action = MobileNavigationDirections.actionGlobalPlaceDetailFragment(place, placesList.toTypedArray())
                 navController.navigate(action)
             }
         }
