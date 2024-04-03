@@ -16,11 +16,13 @@ import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
 import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.FilterData
+import com.packapps.features.places.model.data.PlaceViewData
 import com.packapps.features.places.model.data.PlacesState
+import com.packapps.features.places.view.adapter.OnPlaceClickListener
 import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
+class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, OnPlaceClickListener {
 
     private var _binding: FragmentPlacesBinding? = null
     private val viewModel by viewModel<PlacesViewModel>()
@@ -60,7 +62,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
         val root: View = binding.root
 
         val rvPlaces: RecyclerView = binding.rvPlaces
-        rvPlaces.layoutManager = GridLayoutManager(context, 2) // 2 colunas
+        rvPlaces.layoutManager = GridLayoutManager(context, 2)
 
 
         viewModel.placesStateLiveData.observe(viewLifecycleOwner) { state ->
@@ -70,7 +72,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
                 }
                 is PlacesState.Success -> {
                     binding.viewFlipper.displayedChild = 1
-                    rvPlaces.adapter = PlacesAdapter(state.places)
+                    rvPlaces.adapter = PlacesAdapter(state.places, this)
                 }
                 is PlacesState.Failure -> {
                     binding.viewFlipper.displayedChild = 2
@@ -147,5 +149,9 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
         filterData.radius = 100000
 
         viewModel.fetchPlace(filterData)
+    }
+
+    override fun onPlaceClick(place: PlaceViewData) {
+        Toast.makeText(context, place.toString(), Toast.LENGTH_SHORT).show()
     }
 }

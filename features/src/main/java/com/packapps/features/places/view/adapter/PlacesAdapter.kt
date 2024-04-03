@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.packapps.features.R
 import com.packapps.features.places.model.data.PlaceViewData
 
-class PlacesAdapter(private val placesList: List<PlaceViewData>) : RecyclerView.Adapter<PlacesAdapter.PlaceViewHolder>() {
+class PlacesAdapter(private val placesList: List<PlaceViewData>, private val listener: OnPlaceClickListener) : RecyclerView.Adapter<PlacesAdapter.PlaceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.place_cardview, parent, false)
@@ -28,6 +28,8 @@ class PlacesAdapter(private val placesList: List<PlaceViewData>) : RecyclerView.
         holder.tvPriceRange.text = place.priceRange
         holder.tvRating.text = place.userRating.toString()
         holder.tvDistance.text = place.distance.toString() + "m from you"
+
+        holder.bind(place, listener)
     }
 
     override fun getItemCount() = placesList.size
@@ -38,6 +40,13 @@ class PlacesAdapter(private val placesList: List<PlaceViewData>) : RecyclerView.
         val tvPriceRange: TextView = itemView.findViewById(R.id.priceRangeTextView)
         val tvRating: TextView = itemView.findViewById(R.id.userRatingTextView)
         val tvDistance: TextView = itemView.findViewById(R.id.distanceTextView)
+
+        fun bind(place: PlaceViewData, listener: OnPlaceClickListener) {
+
+            itemView.setOnClickListener {
+                listener.onPlaceClick(place)
+            }
+        }
 
     }
 }
