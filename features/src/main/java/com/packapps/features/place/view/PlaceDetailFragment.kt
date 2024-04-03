@@ -18,7 +18,6 @@ class PlaceDetailFragment : Fragment() {
     private var _binding: FragmentPlaceDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: PlaceDetailsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
