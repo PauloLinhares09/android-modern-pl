@@ -74,7 +74,7 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
                 }
                 is PlacesState.Failure -> {
                     binding.viewFlipper.displayedChild = 2
-                    binding.errorComponent.setErrorType(ErrorComponent.ErrorType.NETWORK_ERROR)
+                    binding.errorComponent.setErrorType(state.error)
                     binding.errorComponent.setOnTryAgainClickListener {
                         viewModel.fetchPlace(filterData.clear())
                     }
