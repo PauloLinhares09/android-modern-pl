@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.packapps.design.R
+import java.io.IOException
+import java.util.*
 
 class ErrorComponent @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -37,3 +39,12 @@ class ErrorComponent @JvmOverloads constructor(
     }
 
 }
+
+fun Throwable.toErrorComponent(): ErrorComponent.ErrorType {
+    return when (this) {
+        is IOException -> ErrorComponent.ErrorType.NETWORK_ERROR
+        is EmptyStackException -> ErrorComponent.ErrorType.LIST_EMPTY
+        else -> ErrorComponent.ErrorType.UNKNOWN_ERROR
+    }
+}
+
