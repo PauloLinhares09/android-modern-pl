@@ -1,6 +1,8 @@
 package com.packapps.features.places.model
 
+import com.packapps.network.data.place_detail.Photo
 import com.packapps.network.data.place_detail.PlaceDetailResponse
+import com.packapps.network.data.place_detail.TipXX
 import com.packapps.network.data.places.PlacesResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -17,6 +19,20 @@ class PlacesRepository(private val apiService: PlacesApiService) {
         return flow {
             val place = apiService.getPlaceDetails(id).body() ?: null
             emit(place)
+        }
+    }
+
+    suspend fun getPlacePhotos(id: String): Flow<List<Photo>?> {
+        return flow {
+            val photos = apiService.getPlacePhotos(id).body() ?: emptyList()
+            emit(photos)
+        }
+    }
+
+    suspend fun getPlaceTips(id: String): Flow<List<TipXX>?> {
+        return flow {
+            val tips = apiService.getPlaceTips(id).body() ?: emptyList()
+            emit(tips)
         }
     }
 }

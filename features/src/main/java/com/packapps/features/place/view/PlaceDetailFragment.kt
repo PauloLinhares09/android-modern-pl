@@ -13,7 +13,9 @@ import com.packapps.core.utils.Constants
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
 import com.packapps.features.place.model.data.PlaceDetailState
+import com.packapps.features.place.view.adapter.PhotoAdapter
 import com.packapps.features.place.view.adapter.PlaceDetailsAdapter
+import com.packapps.features.place.view.adapter.TipsAdapter
 import com.packapps.features.places.PlaceDetailViewModel
 import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.PlaceViewData
@@ -63,11 +65,8 @@ class PlaceDetailFragment : Fragment() {
 
                         binding.ivFavorite.setImageResource(if (it.isFavorite) com.packapps.design.R.drawable.favorite_yes else com.packapps.design.R.drawable.favorite_not)
 
-                        // Supondo que você tenha um adapter para a RecyclerView de fotos
-//                        binding.rvVenuePhotos.adapter = PhotoAdapter(it.photos)
-//
-//                        // Supondo que você tenha um adapter para a RecyclerView de dicas
-//                        binding.rvCustomerTips.adapter = TipsAdapter(it.tips)
+                        binding.rvVenuePhotos.adapter = PhotoAdapter(it.photos)
+                        binding.rvCustomerTips.adapter = TipsAdapter(it.tips)
                     }
                 }
                 is PlaceDetailState.Failure -> {

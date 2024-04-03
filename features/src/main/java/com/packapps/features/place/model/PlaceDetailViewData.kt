@@ -33,7 +33,6 @@ data class PlaceDetailViewData(
     data class Tip(
         val id: String,
         val createdAt: String,
-        val text: String,
-        val userName: String
+        val text: String
     ) : Parcelable
 }

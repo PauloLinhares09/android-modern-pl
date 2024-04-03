@@ -1,12 +1,16 @@
 package com.packapps.features.places.model.interactor
 
 import com.packapps.features.place.model.PlaceDetailViewData
-import com.packapps.network.data.places.PlacesResponse
 import com.packapps.features.places.model.PlacesRepository
 import com.packapps.features.places.model.data.PlaceViewData
+import com.packapps.network.data.place_detail.Photo
+
 import com.packapps.network.data.place_detail.PlaceDetailResponse
+import com.packapps.network.data.place_detail.TipXX
+
 import com.packapps.network.data.places.Result
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 
 class PlacesInteractor(private val placesRepository: PlacesRepository) {
@@ -19,22 +23,40 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
     }
 
     suspend fun getPlaceDetail(id: String): Flow<PlaceDetailViewData?> {
-        return placesRepository.getPlaceDetail(id).map { placeDetailResponse ->
-            placeDetailResponse.toPlaceDetailViewData()
+        val placeDetailsFlow = placesRepository.getPlaceDetail(id)
+        val placePhotosFlow = placesRepository.getPlacePhotos(id)
+        val placeTipsFlow = placesRepository.getPlaceTips(id)
+
+        return combine(placeDetailsFlow, placePhotosFlow, placeTipsFlow) { placeDetail, photos, tips ->
+            placeDetail?.toPlaceDetailViewData(photos.orEmpty(), tips.orEmpty())
         }
     }
 
-    private fun PlaceDetailResponse?.toPlaceDetailViewData(): PlaceDetailViewData? =
-        this?.let {
-            PlaceDetailViewData(
-                venueName = it?.name.orEmpty(),
-                categories = it.categories!!.map { category -> category?.name.orEmpty() },
-                address = it?.location?.formattedAddress.orEmpty(),
-                isOpenNow = it.closedBucket != "Closed", // Simplificação para determinar disponibilidade
-                photos = listOf(), // Simulação, pois a API de exemplo não inclui fotos
-                tips = listOf() // Simulação, pois a API de exemplo não inclui dicas
-            )
-        }
+    private fun PlaceDetailResponse.toPlaceDetailViewData(photos: List<Photo>, tips: List<TipXX>): PlaceDetailViewData =
+        PlaceDetailViewData(
+            venueName = name.orEmpty(),
+            categories = categories!!.mapNotNull { it?.name.orEmpty() },
+            address = location?.formattedAddress.orEmpty(),
+            isOpenNow = closedBucket != "Closed",
+            photos = photos.map { photo ->
+                PlaceDetailViewData.Photo(
+                    id = photo.id.orEmpty(),
+                    createdAt = photo.createdAt.orEmpty(),
+                    prefix = photo.prefix.orEmpty(),
+                    suffix = photo.suffix.orEmpty(),
+                    width = photo.width ?: 0,
+                    height = photo.height ?: 0
+                )
+            },
+            tips = tips.map { tip ->
+                PlaceDetailViewData.Tip(
+                    id = tip.id.orEmpty(),
+                    createdAt = tip.createdAt.orEmpty(),
+                    text = tip.text.orEmpty()
+                )
+            }
+        )
+
 
 
 

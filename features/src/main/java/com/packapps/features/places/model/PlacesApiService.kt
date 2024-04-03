@@ -1,6 +1,8 @@
 package com.packapps.features.places.model
 
+import com.packapps.network.data.place_detail.Photo
 import com.packapps.network.data.place_detail.PlaceDetailResponse
+import com.packapps.network.data.place_detail.TipXX
 import com.packapps.network.data.places.PlacesResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -21,5 +23,15 @@ interface PlacesApiService {
     suspend fun getPlaceDetails(
         @Path("fsqId") fsqId: String
     ): Response<PlaceDetailResponse>
+
+    @GET("v3/places/{fsqId}/photos")
+    suspend fun getPlacePhotos(
+        @Path("fsqId") fsqId: String
+    ): Response<List<Photo>>
+
+    @GET("v3/places/{fsqId}/tips")
+    suspend fun getPlaceTips(
+        @Path("fsqId") fsqId: String
+    ): Response<List<TipXX>>
 
 }

@@ -15,7 +15,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/tvCustomerName"
+        android:id="@+id/tvCretaedAt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         android:layout_marginEnd="16dp"
         android:text="This place is amazing!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvCustomerName"
-        app:layout_constraintTop_toBottomOf="@id/tvCustomerName" />
+        app:layout_constraintStart_toStartOf="@+id/tvCretaedAt"
+        app:layout_constraintTop_toBottomOf="@id/tvCretaedAt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
