@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Road(
     @SerializedName("latitude")
-    val latitude: Int?,
+    val latitude: Double?,
     @SerializedName("longitude")
-    val longitude: Int?
+    val longitude: Double?
 )
