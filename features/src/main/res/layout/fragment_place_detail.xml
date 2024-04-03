@@ -8,154 +8,183 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".place.view.PlaceDetailFragment">
 
-        <TextView
-            android:id="@+id/tvPlaceName"
-            style="@style/H1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="@dimen/margin_16"
-            android:text="@string/app_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:id="@+id/spacer"
+        <include
+            android:id="@+id/loading"
+            layout="@layout/component_loading"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPlaceName"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent" />
 
 
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            app:cardCornerRadius="@dimen/margin_8"
-            app:cardElevation="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spacer"
-            app:layout_constraintWidth_percent="0.9"
-            tools:ignore="MissingDefaultResource">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <TextView
+                android:id="@+id/tvPlaceName"
+                style="@style/H1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:text="@string/app_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/spacer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp">
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPlaceName"
+                tools:ignore="MissingConstraints" />
 
-                <ImageView
-                    android:id="@+id/ivFavorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_launcher_background"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tvCategoryPriceRating"
-                    tools:ignore="ContentDescription" />
 
-                <TextView
-                    android:id="@+id/tvCategoryPriceRating"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Category • $ • ★ 4.5 (200)"
-                    style="@style/H4"
-                    app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                app:cardCornerRadius="@dimen/margin_8"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spacer"
+                app:layout_constraintWidth_percent="0.9"
+                tools:ignore="MissingDefaultResource">
 
-                <TextView
-                    android:id="@+id/tvPhoneNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Phone: (123) 456-7890"
-                    style="@style/Description"
-                    app:layout_constraintEnd_toEndOf="@+id/tvCategoryPriceRating"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvCategoryPriceRating" />
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="123 Main St, City, Country"
-                    style="@style/Description"
-                    app:layout_constraintEnd_toEndOf="@+id/tvPhoneNumber"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
-
-                <TextView
-                    android:id="@+id/tvAvailability"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Open Now"
-                    style="@style/SubDescription"
-                    app:layout_constraintEnd_toEndOf="@+id/tvAddress"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvAddress" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvVenuePhotos"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvAvailability"
-                    tools:listitem="@layout/item_photo" />
-
-                <View
-                    android:id="@+id/divider"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvVenuePhotos"
-                    tools:ignore="MissingConstraints" />
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/txLabelCustomerTips"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/look_what_are_talking_about_this_place"
-                    style="@style/H4"
-                    android:layout_marginTop="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/divider" />
+                    <ImageView
+                        android:id="@+id/ivFavorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_launcher_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tvCategoryPriceRating"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvCategoryPriceRating"
+                        style="@style/H4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Category • $ • ★ 4.5 (200)"
+                        app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPhoneNumber"
+                        style="@style/Description"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Phone: (123) 456-7890"
+                        app:layout_constraintEnd_toEndOf="@+id/tvCategoryPriceRating"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCategoryPriceRating" />
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        style="@style/Description"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="123 Main St, City, Country"
+                        app:layout_constraintEnd_toEndOf="@+id/tvPhoneNumber"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+                    <TextView
+                        android:id="@+id/tvAvailability"
+                        style="@style/SubDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Open Now"
+                        app:layout_constraintEnd_toEndOf="@+id/tvAddress"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVenuePhotos"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="16dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvailability"
+                        tools:listitem="@layout/item_photo" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/colorPrimary"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rvVenuePhotos"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txLabelCustomerTips"
+                        style="@style/H4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/look_what_are_talking_about_this_place"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider" />
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvCustomerTips"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txLabelCustomerTips"
-                    tools:listitem="@layout/item_customer_tip" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCustomerTips"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="16dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txLabelCustomerTips"
+                        tools:listitem="@layout/item_customer_tip" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.packapps.design.components.ErrorComponent
+            android:id="@+id/errorComponent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </ViewFlipper>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

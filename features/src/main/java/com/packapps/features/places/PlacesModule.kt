@@ -14,6 +14,7 @@ val placesModule = module {
     single { PlacesRepository(apiService = get()) }
     single { PlacesInteractor(placesRepository = get()) }
     viewModel { PlacesViewModel(placesInteractor = get()) }
+    viewModel { PlaceDetailViewModel(placesInteractor = get()) }
 }
 
 

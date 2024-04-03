@@ -10,13 +10,20 @@ import androidx.fragment.app.Fragment
 import com.packapps.core.navigation.NavigationCommand
 import com.packapps.core.utils.Constants
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
+import com.packapps.features.place.model.data.PlaceDetailState
 import com.packapps.features.place.view.adapter.PlaceDetailsAdapter
+import com.packapps.features.places.PlaceDetailViewModel
+import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.PlaceViewData
+import com.packapps.features.places.model.data.PlacesState
+import com.packapps.features.places.view.adapter.PlacesAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceDetailFragment : Fragment() {
 
     private var _binding: FragmentPlaceDetailBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModel<PlaceDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +41,26 @@ class PlaceDetailFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val selectedPlace = arguments?.getParcelable<PlaceViewData>(Constants.PLACE)
+        viewModel.fetchPlaceDetail(selectedPlace?.fsqId.orEmpty())
         binding.tvPlaceName.text = selectedPlace?.venueName
+
+        viewModel.placeDetailStateLiveData.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is PlaceDetailState.Loading -> {
+                    binding.viewFlipper.displayedChild = 0
+                }
+                is PlaceDetailState.Success -> {
+                    binding.viewFlipper.displayedChild = 1
+                }
+                is PlaceDetailState.Failure -> {
+                    binding.viewFlipper.displayedChild = 2
+                    binding.errorComponent.setErrorType(state.error)
+                    binding.errorComponent.setOnTryAgainClickListener {
+                        viewModel.fetchPlaceDetail(selectedPlace?.fsqId.orEmpty())
+                    }
+                }
+            }
+        }
 
     }
 

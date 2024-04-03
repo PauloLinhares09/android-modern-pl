@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class PlaceViewData(
+    val fsqId: String?,
     val venueProfileImage: String?,
     val venueName: String?,
     val priceRange: String?,
