@@ -29,7 +29,7 @@ class PlacesAdapter(private val placesList: List<PlaceViewData>, private val lis
         holder.tvRating.text = place.userRating.toString()
         holder.tvDistance.text = place.distance.toString() + "m from you"
 
-        holder.bind(place, listener)
+        holder.bind(place, listener, placesList)
     }
 
     override fun getItemCount() = placesList.size
@@ -41,10 +41,14 @@ class PlacesAdapter(private val placesList: List<PlaceViewData>, private val lis
         val tvRating: TextView = itemView.findViewById(R.id.userRatingTextView)
         val tvDistance: TextView = itemView.findViewById(R.id.distanceTextView)
 
-        fun bind(place: PlaceViewData, listener: OnPlaceClickListener) {
+        fun bind(
+            place: PlaceViewData,
+            listener: OnPlaceClickListener,
+            placesList: List<PlaceViewData>
+        ) {
 
             itemView.setOnClickListener {
-                listener.onPlaceClick(place)
+                listener.onPlaceClick(place, placesList)
             }
         }
 

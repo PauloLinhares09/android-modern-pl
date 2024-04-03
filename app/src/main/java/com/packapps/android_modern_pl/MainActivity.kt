@@ -22,6 +22,7 @@ import android.location.Location
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.Task
+import com.packapps.features.places.model.data.PlaceViewData
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,7 +53,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        registerReceiver(locationPermissionRequestReceiver, IntentFilter(Constants.ACTION_REQUEST_LOCATION_PERMISSION))
+        val intentFilter = IntentFilter().apply {
+            addAction(Constants.ACTION_REQUEST_LOCATION_PERMISSION)
+            addAction(Constants.ACTION_PLACE_CLICK)
+        }
+        registerReceiver(locationPermissionRequestReceiver, intentFilter)
     }
 
     override fun onStop() {
@@ -100,9 +105,15 @@ class MainActivity : AppCompatActivity() {
     //#### Broadcast location
     private val locationPermissionRequestReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            // Solicitar permissão de localização aqui
-            if (intent?.action == Constants.ACTION_REQUEST_LOCATION_PERMISSION) {
-                checkLocationPermission()
+
+            when(intent?.action) {
+                Constants.ACTION_REQUEST_LOCATION_PERMISSION -> {
+                    checkLocationPermission()
+                }
+                Constants.ACTION_PLACE_CLICK -> {
+                    openFragmentInNavHostFragment(intent)
+                }
+
             }
         }
     }
@@ -112,6 +123,25 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Constants.LL, "$latitude,$longitude")
         sendBroadcast(intent)
     }
+
+    private fun openFragmentInNavHostFragment(intent: Intent) {
+
+        val place: PlaceViewData? = intent.getParcelableExtra(Constants.PLACE)
+        val placesList: Array<PlaceViewData>? = intent.getParcelableArrayExtra(Constants.PLACES_LIST) as? Array<PlaceViewData>
+
+        place?.let {
+            placesList?.let {
+                val navController = findNavController(R.id.nav_host_fragment_activity_main)
+                val action = MobileNavigationDirections.actionGlobalPlaceDetailFragment(place, placesList)
+                navController.navigate(action)
+            }
+        }
+
+
+
+    }
+
+
 
 
 

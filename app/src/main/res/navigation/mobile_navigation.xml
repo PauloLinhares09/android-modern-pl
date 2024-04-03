@@ -5,6 +5,10 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
+    <action
+        android:id="@+id/action_global_placeDetailFragment"
+        app:destination="@id/placeDetailFragment" />
+
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.packapps.features.home.HomeFragment"
@@ -15,11 +19,31 @@
         android:id="@+id/navigation_places"
         android:name="com.packapps.features.places.view.PlacesFragment"
         android:label="@string/title_places"
-        tools:layout="@layout/fragment_places" />
+        tools:layout="@layout/fragment_places" >
+        <action
+            android:id="@+id/action_placesFragment_to_placeDetailFragment"
+            app:destination="@id/placeDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.packapps.features.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/placeDetailFragment"
+        android:name="com.packapps.features.place.view.PlaceDetailFragment"
+        android:label="Fragmento de Detalhe do Lugar"
+        tools:layout="@layout/fragment_place_detail">
+
+        <argument
+            android:name="selected_place"
+            app:argType="com.packapps.features.places.model.data.PlaceViewData" />
+
+        <argument
+            android:name="places_list"
+            app:argType="com.packapps.features.places.model.data.PlaceViewData[]" />
+    </fragment>
+
 </navigation>

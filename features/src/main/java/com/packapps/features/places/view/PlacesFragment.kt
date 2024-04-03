@@ -14,6 +14,7 @@ import com.packapps.core.utils.Constants
 import com.packapps.design.components.ErrorComponent
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
+import com.packapps.features.place.view.PlaceDetailFragment
 import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.FilterData
 import com.packapps.features.places.model.data.PlaceViewData
@@ -149,7 +150,13 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
         viewModel.fetchPlace(filterData)
     }
 
-    override fun onPlaceClick(place: PlaceViewData) {
-        Toast.makeText(context, place.toString(), Toast.LENGTH_SHORT).show()
+    override fun onPlaceClick(place: PlaceViewData, placesList: List<PlaceViewData>) {
+        //Create the Broadcast Receiver to pass this params to the MainActivity
+        val intent = Intent(Constants.ACTION_PLACE_CLICK)
+        intent.putExtra(Constants.PLACE, place)
+        intent.putExtra(Constants.PLACES_LIST, placesList.toTypedArray())
+        context?.sendBroadcast(intent)
+
     }
+
 }

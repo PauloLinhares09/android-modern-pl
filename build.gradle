@@ -1,5 +1,17 @@
 buildscript {
     apply from: 'dependencies.gradle'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.2"
+
+    }
 }
 
 plugins {
@@ -8,4 +20,3 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
     id 'com.android.dynamic-feature' version '7.4.1' apply false
 }
-

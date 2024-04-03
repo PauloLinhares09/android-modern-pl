@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 apply from: '../buildFlavors.gradle'
@@ -60,5 +63,8 @@ dependencies {
     implementation libraries.navigation_fragment_ktx
     implementation libraries.navigation_ui_ktx
     implementation libraries.playServicesGcm
+
+    kapt "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+
 
 }
