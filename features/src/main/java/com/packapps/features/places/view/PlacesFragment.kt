@@ -31,8 +31,6 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
     private var locationReceived = false
 
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
