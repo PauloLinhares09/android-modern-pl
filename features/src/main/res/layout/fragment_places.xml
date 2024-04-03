@@ -7,14 +7,27 @@
     android:background="@drawable/bg_card_gradient_fuchsia"
     tools:context="com.packapps.features.places.view.PlacesFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_places"
+    <ViewFlipper
+        android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/loading"
+            layout="@layout/component_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_places"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </ViewFlipper>
 </androidx.constraintlayout.widget.ConstraintLayout>

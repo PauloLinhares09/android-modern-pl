@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -64,15 +63,19 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener {
         viewModel.placesStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is PlacesState.Loading -> {
-                    // Exibir indicador de carregamento
+                    binding.viewFlipper.displayedChild = 0
                 }
                 is PlacesState.Success -> {
                     // Exibir a lista de locais
+                    binding.viewFlipper.displayedChild = 1
                     rvPlaces.adapter = PlacesAdapter(state.places)
+                    Toast.makeText(context, state.places.toString(), Toast.LENGTH_SHORT).show()
+
                 }
                 is PlacesState.Failure -> {
                     // Exibir mensagem de erro
 //                    showError(state.error.message)
+                    Toast.makeText(context, state.error.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }

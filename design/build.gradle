@@ -49,5 +49,6 @@ dependencies {
     api libraries.appcompat
     api libraries.material
     api libraries.constraint_layout
+    implementation libraries.lottie
 
 }
