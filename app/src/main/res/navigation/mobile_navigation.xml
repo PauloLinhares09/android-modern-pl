@@ -41,9 +41,6 @@
             android:name="com.packapps.foursquare.PLACE"
             app:argType="com.packapps.features.places.model.data.PlaceViewData" />
 
-        <argument
-            android:name="com.packapps.foursquare.PLACES_LIST"
-            app:argType="com.packapps.features.places.model.data.PlaceViewData[]" />
     </fragment>
 
 </navigation>

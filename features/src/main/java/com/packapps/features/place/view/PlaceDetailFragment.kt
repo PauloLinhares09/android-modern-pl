@@ -2,12 +2,12 @@ package com.packapps.features.place.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import com.packapps.core.navigation.NavigationCommand
 import com.packapps.core.utils.Constants
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
 import com.packapps.features.place.view.adapter.PlaceDetailsAdapter
@@ -18,38 +18,34 @@ class PlaceDetailFragment : Fragment() {
     private var _binding: FragmentPlaceDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapter: PlaceDetailsAdapter
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentPlaceDetailBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val selectedPlace = arguments?.getParcelable<PlaceViewData>(Constants.PLACE)
-        val placesArray = arguments?.getParcelableArray(Constants.PLACES_LIST)
-
-        val placesList = placesArray?.let { array ->
-            // Converte o array para um ArrayList de PlaceViewData
-            ArrayList(array.map { it as PlaceViewData })
-        }
-
-
-        val rvPlaces: RecyclerView = binding.recyclerView
-        rvPlaces.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        selectedPlace?.let {
-            placesList?.add(0, it)
-            adapter = PlaceDetailsAdapter(placesList?: mutableListOf(), it)
-            rvPlaces.adapter = adapter
-
-            val snapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(rvPlaces)
-        }
-
+        binding.tvPlaceName.text = selectedPlace?.venueName
 
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                (activity as? NavigationCommand)?.navigateUp()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 }

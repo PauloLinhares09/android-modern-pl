@@ -150,11 +150,10 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
         viewModel.fetchPlace(filterData)
     }
 
-    override fun onPlaceClick(place: PlaceViewData, placesList: List<PlaceViewData>) {
+    override fun onPlaceClick(place: PlaceViewData) {
         //Create the Broadcast Receiver to pass this params to the MainActivity
         val intent = Intent(Constants.ACTION_PLACE_CLICK)
         intent.putExtra(Constants.PLACE, place)
-        intent.putParcelableArrayListExtra(Constants.PLACES_LIST, ArrayList(placesList))
         context?.sendBroadcast(intent)
 
     }

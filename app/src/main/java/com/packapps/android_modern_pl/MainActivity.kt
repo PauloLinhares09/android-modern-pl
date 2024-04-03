@@ -22,9 +22,10 @@ import android.location.Location
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.Task
+import com.packapps.core.navigation.NavigationCommand
 import com.packapps.features.places.model.data.PlaceViewData
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationCommand {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -127,24 +128,22 @@ class MainActivity : AppCompatActivity() {
     private fun openFragmentInNavHostFragment(intent: Intent) {
 
         val place: PlaceViewData? = intent.getParcelableExtra(Constants.PLACE)
-        val placesList: ArrayList<PlaceViewData>? = intent.getParcelableArrayListExtra(Constants.PLACES_LIST)
 
         place?.let {
-            placesList?.let {
-                val navController = findNavController(R.id.nav_host_fragment_activity_main)
-                val action = MobileNavigationDirections.actionGlobalPlaceDetailFragment(place, placesList.toTypedArray())
-                navController.navigate(action)
-            }
+            val navController = findNavController(R.id.nav_host_fragment_activity_main)
+            val action = MobileNavigationDirections.actionGlobalPlaceDetailFragment(place)
+            navController.navigate(action)
         }
 
     }
 
 
-
-
-
-
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
+
+    override fun navigateUp() {
+        findNavController(R.id.nav_host_fragment_activity_main).navigateUp()
+    }
 }
+
