@@ -32,7 +32,7 @@ class PhotoAdapter(photos: List<PlaceDetailViewData.Photo>) : RecyclerView.Adapt
             fun bind(photo: PlaceDetailViewData.Photo) {
                 Glide.with(itemView.context)
                     .load(photo.prefix + "original" + photo.suffix)
-                    .into(itemView.rootView as ImageView)
+                    .into(itemView.findViewById(R.id.ivPhoto))
             }
         }
 

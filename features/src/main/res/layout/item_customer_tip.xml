@@ -7,12 +7,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/ivCustomerPhoto"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_launcher_background"
-        tools:ignore="MissingConstraints" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/margin_8"
+        android:layout_marginStart="8dp"
+        app:cardCornerRadius="@dimen/margin_8"
+        app:cardElevation="@dimen/margin_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ivCustomerPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvCretaedAt"
@@ -20,9 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Customer Name"
+        tools:text="Customer Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivCustomerPhoto"
+        app:layout_constraintStart_toEndOf="@id/cardViewImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -30,7 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="This place is amazing!"
+        tools:text="This place is amazing!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvCretaedAt"
         app:layout_constraintTop_toBottomOf="@id/tvCretaedAt" />
