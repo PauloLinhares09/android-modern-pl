@@ -18,6 +18,12 @@ class PlaceDetailsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_place_detail, parent, false)
+
+        // Define a largura do item como 90% da largura da tela
+        val displayMetrics = parent.context.resources.displayMetrics
+        val width = displayMetrics.widthPixels * 0.9
+        itemView.layoutParams = RecyclerView.LayoutParams(width.toInt(), RecyclerView.LayoutParams.MATCH_PARENT)
+
         return DetailsViewHolder(itemView)
     }
 
