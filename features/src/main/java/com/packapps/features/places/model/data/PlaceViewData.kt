@@ -10,6 +10,7 @@ data class PlaceViewData(
     val id: Int?,
     val venueProfileImage: String?,
     val venueName: String?,
+    val shortName: String?,
     val priceRange: String?,
     val userRating: Double?,
     val distance: Int?

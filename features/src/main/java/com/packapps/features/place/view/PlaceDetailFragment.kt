@@ -85,7 +85,7 @@ class PlaceDetailFragment : Fragment() {
 
     private fun changeTitleActionBar(selectedPlace: PlaceViewData?) {
         (activity as AppCompatActivity).supportActionBar?.title =
-            selectedPlace?.venueName?.split(" ")?.firstOrNull()
+            selectedPlace?.shortName ?: selectedPlace?.venueName
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

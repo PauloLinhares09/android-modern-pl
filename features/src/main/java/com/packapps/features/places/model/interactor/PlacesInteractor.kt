@@ -68,6 +68,7 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
             fsqId = this?.fsqId,
             id = this?.categories?.firstOrNull()?.id,
             venueName = this?.name,
+            shortName = this?.categories?.firstOrNull()?.shortName,
             priceRange = null,
             userRating = null,
             distance = this?.distance
