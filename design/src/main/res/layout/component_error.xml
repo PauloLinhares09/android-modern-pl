@@ -35,6 +35,7 @@
     <TextView
         android:id="@+id/textView2"
         style="@style/Description"
+        android:textColor="@color/textIcons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
