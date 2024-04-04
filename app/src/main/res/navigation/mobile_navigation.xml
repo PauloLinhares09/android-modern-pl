@@ -38,7 +38,6 @@
     <fragment
         android:id="@+id/placeDetailFragment"
         android:name="com.packapps.features.place.view.PlaceDetailFragment"
-        android:label="Fragmento de Detalhe do Lugar"
         tools:layout="@layout/fragment_place_detail">
 
         <argument

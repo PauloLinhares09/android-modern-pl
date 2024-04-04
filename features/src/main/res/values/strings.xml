@@ -3,10 +3,9 @@
     <string name="subtitle">Subtitle</string>
     <string name="price_range">Price Range</string>
     <string name="opened_now">Opened Now</string>
-    <string name="cancelar">Cancelar</string>
-    <string name="filtrar">Filtrar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel">Cancelar</string>
+    <string name="filter">Filtrar</string>
+
     <string name="radius_value">Raio: %1$d metros</string>
     <string name="title_filter">Aprimore sua busca!</string>
     <string name="subtitle_filter">Filtre os resultados de acordo com suas preferências.</string>
