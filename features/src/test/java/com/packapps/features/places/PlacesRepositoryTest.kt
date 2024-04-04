@@ -28,7 +28,6 @@ class PlacesRepositoryTest {
     @Test
     fun `getPlaces returns expected data`() = runTest {
         val mockResponse = mockk<PlacesResponse>()
-        // Mock API response
         coEvery { apiService.getPlaces(any(), any(), any(), any()) } returns Response.success(mockResponse)
 
         val result = repository.getPlaces(null, false, "ll", 1000).toList().first()
@@ -39,7 +38,7 @@ class PlacesRepositoryTest {
     @Test
     fun `getPlaceDetail returns expected data`() = runTest {
         val mockResponse = mockk<PlaceDetailResponse>()
-        // Mock API response
+
         coEvery { apiService.getPlaceDetails(any()) } returns Response.success(mockResponse)
 
         val result = repository.getPlaceDetail("fsq_id").toList().first()
@@ -50,7 +49,7 @@ class PlacesRepositoryTest {
     @Test
     fun `getPlacePhotos returns expected data`() = runTest {
         val mockPhotosList = listOf(mockk<Photo>())
-        // Mock API response
+
         coEvery { apiService.getPlacePhotos(any()) } returns Response.success(mockPhotosList)
 
         val result = repository.getPlacePhotos("fsq_id").toList().first()
@@ -61,7 +60,7 @@ class PlacesRepositoryTest {
     @Test
     fun `getPlaceTips returns expected data`() = runTest {
         val mockTipsList = listOf(mockk<TipXX>())
-        // Mock API response
+
         coEvery { apiService.getPlaceTips(any()) } returns Response.success(mockTipsList)
 
         val result = repository.getPlaceTips("fsq_id").toList().first()
@@ -69,5 +68,5 @@ class PlacesRepositoryTest {
         assertEquals(mockTipsList, result)
     }
 
-    // Add more tests here to cover different scenarios, like API failures.
+
 }

@@ -31,7 +31,6 @@ class PlacesViewModelTest {
 
     @Before
     fun setUp() {
-        // Use a main dispatcher específica para testes
         Dispatchers.setMain(Dispatchers.Unconfined)
 
         viewModel = PlacesViewModel(placesInteractor)
@@ -45,13 +44,13 @@ class PlacesViewModelTest {
 
         val filterData = FilterData(2, false, "ll", 1000)
 
-        // Configura o mock do interactor para retornar um fluxo com dados falsos
+
         coEvery { placesInteractor.getPlaces(any(), any(), any(), any()) } returns flowOf(fakePlacesList)
 
-        // Ativa o método fetchPlace
+
         viewModel.fetchPlace(filterData)
 
-        // Verifica se o estado é Success e contém os dados corretos
+
         assertTrue(viewModel.placesStateLiveData.getOrAwaitValue() is ViewState.Success<*>)
         assertEquals(fakePlacesList, (viewModel.placesStateLiveData.getOrAwaitValue() as ViewState.Success<List<PlaceViewData>>).data)
     }
@@ -60,19 +59,16 @@ class PlacesViewModelTest {
     fun `fetchPlace with error updates LiveData to Failure state`() {
         val filterData = FilterData(1, false, "ll", 1000)
 
-        // Configura o mock do interactor para lançar uma exceção
         coEvery { placesInteractor.getPlaces(any(), any(), any(), any()) } throws Exception("Test exception")
 
-        // Ativa o método fetchPlace
         viewModel.fetchPlace(filterData)
 
-        // Verifica se o estado é Failure
         assertTrue(viewModel.placesStateLiveData.getOrAwaitValue() is ViewState.Failure)
     }
 
     @After
     fun tearDown() {
-        // Reseta o main dispatcher para evitar problemas em outros testes
+
         Dispatchers.resetMain()
     }
 }
