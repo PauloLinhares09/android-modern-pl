@@ -29,7 +29,10 @@ ext {
             playServicesLocation: '18.0.0',
             playServicesGcm: '17.0.0',
             lottie: '6.4.0',
-            springAnimation: '1.0.0'
+            springAnimation: '1.0.0',
+            mockk: '1.12.0',
+            coroutines_test: '1.6.0',
+            core_testing: '2.1.0'
 
     ]
 
@@ -66,7 +69,11 @@ ext {
 
             junit: "junit:junit:${libVersions.junit}",
             android_test_junit: "androidx.test.ext:junit:${libVersions.junitExt}",
-            espresso_core: "androidx.test.espresso:espresso-core:${libVersions.espressoCore}"
+            espresso_core: "androidx.test.espresso:espresso-core:${libVersions.espressoCore}",
+            mockk: "io.mockk:mockk:${libVersions.mockk}",
+            coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${libVersions.coroutines_test}",
+            core_testing: "androidx.arch.core:core-testing:${libVersions.core_testing}",
+
     ]
 
 

@@ -58,4 +58,11 @@ dependencies {
     implementation libraries.recyclerview
     implementation libraries.glide
 
+    testImplementation tests.junit
+    testImplementation tests.mockk
+    testImplementation tests.coroutines_test
+    testImplementation tests.core_testing
+    androidTestImplementation tests.android_test_junit
+    androidTestImplementation tests.espresso_core
+
 }
