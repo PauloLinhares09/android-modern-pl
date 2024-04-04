@@ -71,8 +71,8 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
             id = this?.categories?.firstOrNull()?.id,
             venueName = this?.name,
             shortName = this?.categories?.firstOrNull()?.shortName,
-            priceRange = null,
-            userRating = null,
+            priceRange = "No price range available",
+            userRating = "No rating available",
             distance = this?.distance
         )
     }

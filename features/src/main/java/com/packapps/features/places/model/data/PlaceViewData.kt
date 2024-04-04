@@ -12,6 +12,6 @@ data class PlaceViewData(
     val venueName: String?,
     val shortName: String?,
     val priceRange: String?,
-    val userRating: Double?,
+    val userRating: String?,
     val distance: Int?
 ) : Parcelable
