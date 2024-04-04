@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class PlaceDetailFragment : Fragment() {
 
     private var _binding: FragmentPlaceDetailBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding)
     private val viewModel by viewModel<PlaceDetailViewModel>()
 
     override fun onCreateView(

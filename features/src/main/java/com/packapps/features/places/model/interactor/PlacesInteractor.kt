@@ -37,7 +37,7 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
             venueName = name.orEmpty(),
 //            priceRange = "Category • ${price?.toString()} • ★ $popularity (${rating})", //Category • $ • ★ 4.5 (200)
             priceRange = "Category • \$ • ★ 4.5 (200)",
-            categories = categories!!.mapNotNull { it?.name.orEmpty() },
+            categories = categories?.mapNotNull { it?.name.orEmpty() }.orEmpty(),
             address = location?.formattedAddress.orEmpty(),
             isOpenNow = closedBucket != "Closed",
             photos = photos.map { photo ->

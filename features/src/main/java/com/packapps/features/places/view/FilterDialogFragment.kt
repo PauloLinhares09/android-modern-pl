@@ -14,7 +14,7 @@ import com.packapps.features.databinding.DialogFilterBinding
 class FilterDialogFragment : DialogFragment() {
 
     private var _binding: DialogFilterBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding)
 
     interface FilterDialogListener {
         fun onFilterApply(priceRange: Int, openedNow: Boolean, radius: Int)
