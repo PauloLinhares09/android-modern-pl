@@ -12,15 +12,12 @@ import com.packapps.core.navigation.NavigationCommand
 import com.packapps.core.utils.Constants
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
-import com.packapps.features.place.model.data.PlaceDetailState
+import com.packapps.features.place.model.PlaceDetailViewData
+import com.packapps.design.utils.ViewState
 import com.packapps.features.place.view.adapter.PhotoAdapter
-import com.packapps.features.place.view.adapter.PlaceDetailsAdapter
 import com.packapps.features.place.view.adapter.TipsAdapter
 import com.packapps.features.places.PlaceDetailViewModel
-import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.PlaceViewData
-import com.packapps.features.places.model.data.PlacesState
-import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceDetailFragment : Fragment() {
@@ -52,14 +49,14 @@ class PlaceDetailFragment : Fragment() {
 
         viewModel.placeDetailStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is PlaceDetailState.Loading -> {
+                is ViewState.Loading -> {
                     binding.viewFlipper.displayedChild = 0
                 }
-                is PlaceDetailState.Success -> {
+                is ViewState.Success<*> -> {
+                    val state = state as? ViewState.Success<PlaceDetailViewData>
                     binding.viewFlipper.displayedChild = 1
 
-                    state.place?.let {
-
+                    state?.data?.let {
                         binding.tvCategoryPriceRating.text = it.priceRange ?: ""
                         binding.tvPhoneNumber.text = it.phoneNumber ?: "(***) ***-****"
                         binding.tvAddress.text = it.address
@@ -71,7 +68,7 @@ class PlaceDetailFragment : Fragment() {
                         binding.rvCustomerTips.adapter = TipsAdapter(it.tips)
                     }
                 }
-                is PlaceDetailState.Failure -> {
+                is ViewState.Failure -> {
                     binding.viewFlipper.displayedChild = 2
                     binding.errorComponent.setErrorType(state.error)
                     binding.errorComponent.setOnTryAgainClickListener {

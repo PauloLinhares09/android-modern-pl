@@ -6,21 +6,16 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.packapps.core.utils.Constants
-import com.packapps.design.animations.FadeInAnimator
-import com.packapps.design.animations.ScaleInAnimator
-import com.packapps.design.components.ErrorComponent
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
-import com.packapps.features.place.view.PlaceDetailFragment
+import com.packapps.design.utils.ViewState
 import com.packapps.features.places.PlacesViewModel
 import com.packapps.features.places.model.data.FilterData
 import com.packapps.features.places.model.data.PlaceViewData
-import com.packapps.features.places.model.data.PlacesState
 import com.packapps.features.places.view.adapter.OnPlaceClickListener
 import com.packapps.features.places.view.adapter.PlacesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -67,14 +62,15 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
 
         viewModel.placesStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is PlacesState.Loading -> {
+                is ViewState.Loading -> {
                     binding.viewFlipper.displayedChild = 0
                 }
-                is PlacesState.Success -> {
+                is ViewState.Success<*> -> {
+                    val state = state as? ViewState.Success<List<PlaceViewData>>
                     binding.viewFlipper.displayedChild = 1
-                    rvPlaces.adapter = PlacesAdapter(state.places, this)
+                    rvPlaces.adapter = PlacesAdapter(state?.data!!, this)
                 }
-                is PlacesState.Failure -> {
+                is ViewState.Failure -> {
                     binding.viewFlipper.displayedChild = 2
                     binding.errorComponent.setErrorType(state.error)
                     binding.errorComponent.setOnTryAgainClickListener {
