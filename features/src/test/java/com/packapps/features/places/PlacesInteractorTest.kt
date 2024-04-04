@@ -149,7 +149,6 @@ class PlacesInteractorTest {
 
         val mockPlaceDetailViewData = mockDetailResponse.toPlaceDetailViewData(emptyList(), emptyList())
 
-        // Mock repository response
         coEvery { repository.getPlaceDetail(any()) } returns flowOf(mockDetailResponse)
         coEvery { repository.getPlacePhotos(any()) } returns flowOf(emptyList())
         coEvery { repository.getPlaceTips(any()) } returns flowOf(emptyList())
@@ -166,8 +165,8 @@ class PlacesInteractorTest {
             venueProfileImage = this.categories?.firstOrNull()?.icon?.let { icon -> "${icon.prefix}bg_64${icon.suffix}" },
             venueName = this.name,
             shortName = this.categories?.firstOrNull()?.shortName,
-            priceRange = "No price range available", // Você precisará ajustar isso com base na sua API
-            userRating = "No rating available", // E este também
+            priceRange = "No price range available",
+            userRating = "No rating available",
             distance = this.distance
         )
     }
@@ -177,13 +176,11 @@ class PlacesInteractorTest {
         return PlaceDetailViewData(
             venueName = this.name.orEmpty(),
             categories = this.categories?.mapNotNull { it?.name.orEmpty() }.orEmpty(),
-            // Presumi que `priceRange` e `userRating` sejam simplificações, pois você precisará ajustá-las conforme sua API
-            priceRange = "Category • \$ • ★ 4.5 (200)", // Você precisará ajustar isso com base na sua API
-            userRating = 4.5, // E este também
-            rateCount = 200, // E este
-            // Presumi que `isFavorite` seja algo que você gerencia no app, não vindo diretamente da API
+            priceRange = "Category • \$ • ★ 4.5 (200)",
+            userRating = 4.5,
+            rateCount = 200,
             isFavorite = false,
-            phoneNumber = "123-456-7890", // Você precisará ajustar isso com base na sua API
+            phoneNumber = "123-456-7890",
             address = this.location?.formattedAddress.orEmpty(),
             isOpenNow = this.hours?.openNow ?: false,
             photos = photos.map { photo ->
@@ -206,6 +203,4 @@ class PlacesInteractorTest {
         )
     }
 
-
-    // Adicione mais testes conforme necessário para cobrir diferentes cenários e casos de borda
 }
