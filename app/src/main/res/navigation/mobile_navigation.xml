@@ -22,7 +22,11 @@
         tools:layout="@layout/fragment_places" >
         <action
             android:id="@+id/action_placesFragment_to_placeDetailFragment"
-            app:destination="@id/placeDetailFragment" />
+            app:destination="@id/placeDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -40,6 +44,14 @@
         <argument
             android:name="com.packapps.foursquare.PLACE"
             app:argType="com.packapps.features.places.model.data.PlaceViewData" />
+        <action
+            android:id="@+id/action_to_back"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/placeDetailFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
     </fragment>
 
