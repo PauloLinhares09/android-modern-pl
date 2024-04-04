@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.packapps.core.utils.Constants
+import com.packapps.design.animations.FadeInAnimator
+import com.packapps.design.animations.ScaleInAnimator
 import com.packapps.design.components.ErrorComponent
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlacesBinding
@@ -62,7 +64,6 @@ class PlacesFragment : Fragment(), FilterDialogFragment.FilterDialogListener, On
 
         val rvPlaces: RecyclerView = binding.rvPlaces
         rvPlaces.layoutManager = GridLayoutManager(context, 2)
-
 
         viewModel.placesStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
