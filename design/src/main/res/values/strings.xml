@@ -2,12 +2,13 @@
 
     <string name="sorry_something_went_wrong">Sorry, something went wrong.</string>
 
-    <string name="network_error_title">Problema de Conexão</string>
-    <string name="network_error_message">Não foi possível conectar à internet. Verifique sua conexão e tente novamente.</string>
-    <string name="list_empty_title">Nenhum Resultado</string>
-    <string name="list_empty_message">Não foram encontrados itens para mostrar.</string>
-    <string name="unknown_error_title">Erro Desconhecido</string>
-    <string name="unknown_error_message">Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.</string>
+    <string name="network_error_title">Connection Problem</string>
+    <string name="network_error_message">Could not connect to the internet. Please check your connection and try again.</string>
+    <string name="list_empty_title">No Results</string>
+    <string name="list_empty_message">No items were found to display.</string>
+    <string name="unknown_error_title">Unknown Error</string>
+    <string name="unknown_error_message">An unexpected error occurred. Please try again later.</string>
     <string name="try_again">Try Again</string>
+
 
 </resources>

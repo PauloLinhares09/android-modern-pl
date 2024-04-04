@@ -3,13 +3,14 @@
     <string name="subtitle">Subtitle</string>
     <string name="price_range">Price Range</string>
     <string name="opened_now">Opened Now</string>
-    <string name="cancel">Cancelar</string>
-    <string name="filter">Filtrar</string>
+    <string name="cancel">Cancel</string>
+    <string name="filter">Filter</string>
 
-    <string name="radius_value">Raio: %1$d metros</string>
-    <string name="title_filter">Aprimore sua busca!</string>
-    <string name="subtitle_filter">Filtre os resultados de acordo com suas preferências.</string>
-    <string name="look_what_are_talking_about_this_place">Look what are talking about this place!</string>
+    <string name="radius_value">Radius: %1$d meters</string>
+    <string name="title_filter">Refine Your Search!</string>
+    <string name="subtitle_filter">Filter the results according to your preferences.</string>
+    <string name="look_what_are_talking_about_this_place">See What People Are Saying About This Place!</string>
     <string name="open_now">Open Now</string>
     <string name="closed">Closed Now</string>
+
 </resources>
