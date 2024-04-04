@@ -95,7 +95,58 @@ class PlacesInteractorTest {
 
     @Test
     fun `getPlaceDetail returns expected data`() = runTest {
-        val mockDetailResponse = mockk<PlaceDetailResponse>()
+        val mockIcon = com.packapps.network.data.place_detail.Icon(
+            classifications = listOf("classificação1", "classificação2"),
+            createdAt = "2024-04-03T11:49:54.320Z",
+            height = 100,
+            id = "idIcone",
+            prefix = "https://example.com/icon_",
+            suffix = ".png",
+            tip = TipXX(
+                id = "idDica",
+                createdAt = "2024-04-03T11:49:54.320Z",
+                text = "Texto da dica mock",
+                url = "https://example.com/dica",
+                lang = "pt-BR",
+                agreeCount = 10,
+                disagreeCount = 2
+            ),
+            width = 100
+        )
+
+
+        val mockDetailResponse = mockk<PlaceDetailResponse> {
+            every { name } returns "Nome do Local"
+            every { categories } returns listOf(
+                com.packapps.network.data.place_detail.Category(
+                    id = 123,
+                    name = "Categoria Teste",
+                    pluralName = "Categorias Teste",
+                    shortName = "Cat Teste",
+                    icon = mockIcon
+                )
+            )
+            every { location } returns com.packapps.network.data.place_detail.Location(
+                address = "Endereço Mock",
+                addressExtended = "Complemento Mock",
+                adminRegion = "Região Administrativa Mock",
+                censusBlock = "Bloco Censitário Mock",
+                country = "País Mock",
+                crossStreet = "Cruzamento Mock",
+                dma = "DMA Mock",
+                formattedAddress = "Endereço Formatado Mock",
+                locality = "Localidade Mock",
+                neighborhood = listOf("Bairro Mock"),
+                poBox = "Caixa Postal Mock",
+                postTown = "Cidade Mock",
+                postcode = "Código Postal Mock",
+                region = "Região Mock"
+
+            )
+            every { closedBucket } returns "Aberto"
+            // Mock outras propriedades necessárias da mesma forma
+        }
+
         val mockPlaceDetailViewData = mockDetailResponse.toPlaceDetailViewData(emptyList(), emptyList())
 
         // Mock repository response
