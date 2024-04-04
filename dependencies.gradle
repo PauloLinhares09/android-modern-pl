@@ -28,7 +28,8 @@ ext {
             glide: '4.12.0',
             playServicesLocation: '18.0.0',
             playServicesGcm: '17.0.0',
-            lottie: '6.4.0'
+            lottie: '6.4.0',
+            springAnimation: '1.0.0'
 
     ]
 
@@ -56,7 +57,8 @@ ext {
             glide: "com.github.bumptech.glide:glide:${libVersions.glide}",
             playServicesLocation: "com.google.android.gms:play-services-location:${libVersions.playServicesLocation}",
             playServicesGcm: "com.google.android.gms:play-services-gcm:${libVersions.playServicesGcm}",
-            lottie: "com.airbnb.android:lottie:${libVersions.lottie}"
+            lottie: "com.airbnb.android:lottie:${libVersions.lottie}",
+            springAnimation: "androidx.dynamicanimation:dynamicanimation:${libVersions.springAnimation}"
 
     ]
 

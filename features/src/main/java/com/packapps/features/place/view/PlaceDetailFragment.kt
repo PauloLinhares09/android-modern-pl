@@ -7,9 +7,13 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.dynamicanimation.animation.DynamicAnimation
+import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import com.packapps.core.navigation.NavigationCommand
 import com.packapps.core.utils.Constants
+import com.packapps.design.animations.applySpringAnimation
 import com.packapps.features.R
 import com.packapps.features.databinding.FragmentPlaceDetailBinding
 import com.packapps.features.place.model.PlaceDetailViewData
@@ -56,6 +60,7 @@ class PlaceDetailFragment : Fragment() {
                     val state = state as? ViewState.Success<PlaceDetailViewData>
                     binding.viewFlipper.displayedChild = 1
 
+                    binding.tvPlaceName.applySpringAnimation()
                     state?.data?.let {
                         binding.tvCategoryPriceRating.text = it.priceRange ?: ""
                         binding.tvPhoneNumber.text = it.phoneNumber ?: "(***) ***-****"

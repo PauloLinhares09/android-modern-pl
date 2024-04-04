@@ -5,8 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.dynamicanimation.animation.DynamicAnimation
+import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.packapps.design.animations.applySpringAnimation
 import com.packapps.features.R
 import com.packapps.features.places.model.data.PlaceViewData
 
@@ -31,6 +35,7 @@ class PlacesAdapter(private val placesList: List<PlaceViewData>, private val lis
 
         holder.bind(place, listener)
     }
+
 
     override fun getItemCount() = placesList.size
 
