@@ -1,4 +1,4 @@
-package com.packapps.features.home
+package com.packapps.features.notifications.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,29 +7,30 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.packapps.features.databinding.FragmentHomeBinding
+import com.packapps.features.databinding.FragmentNotificationsBinding
+import com.packapps.features.notifications.viewModel.CassinoViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment() {
+class CassinoFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentNotificationsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = requireNotNull(_binding)
+    private val viewModel by viewModel<CassinoViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textNotifications
+        viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
