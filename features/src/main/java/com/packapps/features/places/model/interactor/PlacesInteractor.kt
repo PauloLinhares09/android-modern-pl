@@ -35,6 +35,8 @@ class PlacesInteractor(private val placesRepository: PlacesRepository) {
     private fun PlaceDetailResponse.toPlaceDetailViewData(photos: List<Photo>, tips: List<TipXX>): PlaceDetailViewData =
         PlaceDetailViewData(
             venueName = name.orEmpty(),
+//            priceRange = "Category • ${price?.toString()} • ★ $popularity (${rating})", //Category • $ • ★ 4.5 (200)
+            priceRange = "Category • \$ • ★ 4.5 (200)",
             categories = categories!!.mapNotNull { it?.name.orEmpty() },
             address = location?.formattedAddress.orEmpty(),
             isOpenNow = closedBucket != "Closed",
