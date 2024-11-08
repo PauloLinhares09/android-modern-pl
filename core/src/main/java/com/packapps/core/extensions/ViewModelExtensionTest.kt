@@ -16,7 +16,6 @@ fun <T> LiveData<T>.getOrAwaitValue(time: Long = 2, timeUnit: TimeUnit = TimeUni
 
     observeForever(observer)
 
-    // Espera por [time] segundos para o valor ser emitido
     if (!latch.await(time, timeUnit)) {
         throw TimeoutException("LiveData value was never set.")
     }
