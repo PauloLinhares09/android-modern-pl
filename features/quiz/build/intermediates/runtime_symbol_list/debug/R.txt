@@ -1,0 +1,1 @@
+int layout fragment_quiz 0x7e010000

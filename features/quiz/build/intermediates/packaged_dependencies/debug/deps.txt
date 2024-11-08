@@ -1,0 +1,1 @@
+:features:quiz::debug;Capability: group='Android-Modern-pl.features', name='quiz'

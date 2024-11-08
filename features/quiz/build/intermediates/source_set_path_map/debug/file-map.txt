@@ -1,0 +1,8 @@
+com.packapps.dynamic.quiz-pngs-0 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/build/generated/res/pngs/debug
+com.packapps.dynamic.quiz-resValues-1 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/build/generated/res/resValues/debug
+com.packapps.dynamic.quiz-rs-2 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/build/generated/res/rs/debug
+com.packapps.dynamic.quiz-packageDebugResources-3 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.packapps.dynamic.quiz-packageDebugResources-4 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.packapps.dynamic.quiz-merged_res-5 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/build/intermediates/merged_res/debug
+com.packapps.dynamic.quiz-debug-6 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/src/debug/res
+com.packapps.dynamic.quiz-main-7 /Users/macuser/AndroidStudioProjects/AndroidModernpl/features/quiz/src/main/res

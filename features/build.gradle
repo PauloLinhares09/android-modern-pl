@@ -54,6 +54,7 @@ dependencies {
     implementation project(':core')
     implementation project(':design')
     implementation project(':network')
+    implementation project(':business:analytics:public')
     implementation libraries.cardview
     implementation libraries.recyclerview
     implementation libraries.glide

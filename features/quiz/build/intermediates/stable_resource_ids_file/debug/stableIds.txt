@@ -1,0 +1,1 @@
+com.packapps.android_modern_pl:layout/fragment_quiz = 0x7e010000

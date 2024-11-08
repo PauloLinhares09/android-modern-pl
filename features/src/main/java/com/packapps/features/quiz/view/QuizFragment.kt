@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import com.packapps.business.analytics.apublic.Analytics
+import com.packapps.business.analytics.apublic.Dimensions
 import com.packapps.features.databinding.FragmentHomeBinding
+import com.packapps.features.quiz.analytics.QuizAnalytics
 import com.packapps.features.quiz.viewModel.QuizViewModel
 
 class QuizFragment : Fragment() {
@@ -34,6 +36,19 @@ class QuizFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    fun showDialog(){
+
+        Analytics {
+            Event(QuizAnalytics.EVENT) {
+                Dimension {
+                    Dimensions.DEVICE_ID value "123456"
+                    QuizAnalytics.QUIZ_SPECIFIC_DIMENSION value binding.root.id
+                }
+            }
+        }
+
     }
 
     override fun onDestroyView() {
