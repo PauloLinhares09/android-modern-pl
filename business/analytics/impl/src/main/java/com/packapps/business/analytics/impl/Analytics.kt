@@ -14,9 +14,11 @@ class Analytics {
 
     fun send() : Analytics {
         events.forEach { event ->
-            Log.d("TAG","Enviando evento com hash: ${event.hash}")
+//            Log.d("TAG","Enviando evento com hash: ${event.hash}")
+            println("Enviando evento com hash: ${event.hash}")
             event.getDimensions().forEach { (key, value) ->
-                    Log.d("TAG","Dimensão $key: $value")
+//                    Log.d("TAG","Dimensão $key: $value")
+                println("Dimensão $key: $value")
             }
         }
 
