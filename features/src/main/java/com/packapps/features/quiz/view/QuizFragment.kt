@@ -35,6 +35,8 @@ class QuizFragment : Fragment() {
         viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+        showDialog()
+
         return root
     }
 
@@ -42,10 +44,8 @@ class QuizFragment : Fragment() {
 
         Analytics {
             Event(QuizAnalytics.EVENT) {
-                Dimension {
-                    Dimensions.DEVICE_ID value "123456"
-                    QuizAnalytics.QUIZ_SPECIFIC_DIMENSION value binding.root.id
-                }
+                Dimensions.DEVICE_ID Dimension "123456"
+                QuizAnalytics.QUIZ_SPECIFIC_DIMENSION Dimension  binding.root.id
             }
         }
 

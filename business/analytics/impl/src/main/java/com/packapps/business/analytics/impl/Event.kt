@@ -2,11 +2,11 @@ package com.packapps.business.analytics.impl
 
 @AnalyticsDsl
 class Event(val hash: String) {
-    private val dimensions = mutableListOf<Dimension>()
+    private val dimensions = mutableMapOf<String, Any>()
 
-    fun Dimension(block: Dimension.() -> Unit) {
-        val dimension = Dimension().apply(block)
-        dimensions.add(dimension)
+    @AnalyticsDsl
+    infix fun String.Dimension(value: Any) {
+        dimensions[this] = value
     }
 
     fun getDimensions() = dimensions

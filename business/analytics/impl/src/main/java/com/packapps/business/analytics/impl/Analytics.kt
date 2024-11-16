@@ -2,30 +2,24 @@ package com.packapps.business.analytics.impl
 
 import android.util.Log
 
-@DslMarker
-annotation class AnalyticsDsl
 
-@AnalyticsDsl
 class Analytics {
     private val events = mutableListOf<Event>()
 
-    fun Event(hash: String, block: Event.() -> Unit) {
+    @AnalyticsDsl
+    fun Analytics.Event(hash: String, block: Event.() -> Unit) {
         val event = Event(hash).apply(block)
         events.add(event)
     }
 
-    private fun send() {
+    fun send() : Analytics {
         events.forEach { event ->
             Log.d("TAG","Enviando evento com hash: ${event.hash}")
-            event.getDimensions().forEach { dimension ->
-                dimension.getAttributes().forEach { (key, value) ->
+            event.getDimensions().forEach { (key, value) ->
                     Log.d("TAG","Dimensão $key: $value")
-                }
             }
         }
-    }
 
-    fun build() {
-        send()
+        return this
     }
 }
