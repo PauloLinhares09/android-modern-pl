@@ -2,11 +2,10 @@ package com.packapps.business.analytics.impl
 
 import android.util.Log
 
-
+@AnalyticsDsl
 class Analytics {
     private val events = mutableListOf<Event>()
 
-    @AnalyticsDsl
     fun Analytics.Event(hash: String, block: Event.() -> Unit) {
         val event = Event(hash).apply(block)
         events.add(event)
