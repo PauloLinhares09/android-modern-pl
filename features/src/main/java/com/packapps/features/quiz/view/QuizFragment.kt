@@ -37,15 +37,15 @@ class QuizFragment : Fragment() {
     }
 
     fun showDialog(){
-        val builder = AnalyticsBuilder()
-
-        val eventBuilder = AnalyticsBuilder.EventBuilder("hash-event-123")
-        eventBuilder.setDimension("DEVICE-ID", "788222409810a")
-        eventBuilder.setDimension("USER-ID", 123)
-        eventBuilder.setDimension("IS-LOGGED", true)
-
-        builder.setEvent(eventBuilder)
-        builder.build()
+//        val builder = AnalyticsBuilder()
+//
+//        val eventBuilder = AnalyticsBuilder.EventBuilder("hash-event-123")
+//        eventBuilder.setDimension("DEVICE-ID", "788222409810a")
+//        eventBuilder.setDimension("USER-ID", 123)
+//        eventBuilder.setDimension("IS-LOGGED", true)
+//
+//        builder.setEvent(eventBuilder)
+//        builder.build()
 
     }
 

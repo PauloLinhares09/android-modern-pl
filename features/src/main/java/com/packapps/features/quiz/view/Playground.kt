@@ -1,12 +1,11 @@
 package com.packapps.features.quiz.view
 
 import com.packapps.business.analytics.apublic.Analytics
-import com.packapps.business.analytics.apublic.Event
 
 fun main() {
 //    val builder = AnalyticsBuilder()
 //
-//    val event = AnalyticsBuilder.Event("hash-event-123")
+//    val event = AnalyticsBuilder.EventBuilder("hash-event-123")
 //    event.setDimension("DEVICE-ID", "788222409810a")
 //    event.setDimension("USER-ID", 123)
 //    event.setDimension("IS-LOGGED", true)
@@ -21,6 +20,8 @@ fun main() {
             "USER-ID" dimension 213243
         }
     }
+
+
 
 
 }

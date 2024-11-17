@@ -1,15 +1,17 @@
 package com.packapps.business.analytics.apublic.builder
 
+import com.packapps.business.analytics.apublic.AnalyticsDsl
+
+@AnalyticsDsl
 class AnalyticsBuilder {
 
     private val eventBuilders = mutableListOf<EventBuilder>()
 
-    fun setEvent(eventBuilder: EventBuilder): EventBuilder {
-        this.eventBuilders.add(eventBuilder)
-        return eventBuilder
+    fun Event(hash: String, block: EventBuilder.() -> Unit): EventBuilder {
+        return EventBuilder(hash).apply(block).also { eventBuilders.add(it) }
     }
 
-    fun build() : AnalyticsBuilder{
+    fun build(): AnalyticsBuilder {
         send()
         return this
     }
@@ -23,19 +25,18 @@ class AnalyticsBuilder {
         }
     }
 
-
+    @AnalyticsDsl
     class EventBuilder(val hash: String) {
 
         val dimensions = mutableMapOf<String, Any>()
 
-        fun setDimension(dimension: String, value: Any) : EventBuilder {
-            dimensions[dimension] = value
+        fun dimension(key: String, value: Any): EventBuilder {
+            dimensions[key] = value
             return this
         }
 
-        infix fun String.dimension(value:  Any) {
-           setDimension(this, value)
+        infix fun String.dimension(value: Any) {
+            dimension(this, value)
         }
     }
 }
-
